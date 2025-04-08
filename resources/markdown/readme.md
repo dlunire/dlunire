@@ -5,10 +5,10 @@
 > **Importante:** la documentación aún no se ha terminado. En la medida de lo posible, iré actualizando la documentación de cómo funciona esta herramienta.
 > De hecho, cuenta con un motor de plantillas similar a Laravel y cuenta con directivas.
 >
-> Puede [obtener el Framework aqui](https://github.com/dlunamontilla/dlunire "Framework DLUnire") o escribiendo el siguiente comando en la terminal:
+> Puede [obtener el Framework aqui](https://github.com/dunire/dlunire "Framework DLUnire") o escribiendo el siguiente comando en la terminal:
 >
 > ```bash
-> composer create-project dlunamontilla/dlunire tu-app
+> composer create-project dunire/dlunire tu-app
 > ```
 >
 > Antes de usar esta herramienta, debes instalar una extensión para **Visual Studio Code** para obtener el resaltador de sintaxis de las variables de entorno con tipos estáticos.
@@ -51,7 +51,7 @@ Raíz /
 Para crear una aplicación con esta herramienta, debe escribir el siguiente comando:
 
 ```bash
-composer create-project dlunamontilla/dlunire tu-app
+composer create-project dunire/dlunire tu-app
 ```
 
 Y luego, del paso anterior, solo tienes que correrla:

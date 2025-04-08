@@ -16,14 +16,15 @@
         <footer class="footer">
 
             <div class="footer__inner">
-                <strong>Desarrollado y codificado por</strong>
-                David E Luna M &lt;contact@dlunire.pro&gt;
+                <strong>Desarrollado por </strong>
+                DLUnire Framework
             </div>
         </footer>
     </main>
 
 
-    {{ js('/resources/assets/js/prism.js', ["external" => false, "token" => $token, "behavior_attributes" => "data-manual"]) }}
+    {{ js('/resources/assets/js/prism.js', ["external" => false, "token" => $token, "behavior_attributes" =>
+    "data-manual"]) }}
 
     <script nonce="{{ $token }}">
         Prism.highlightAll();
