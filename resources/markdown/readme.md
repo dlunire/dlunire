@@ -240,7 +240,7 @@ Para crear un modelo, puede escribir las siguientes líneas en un archivo que se
 ```php
 namespace DLUnire\Models;
 
-use DLTools\Database\Model;
+use DLCore\Database\Model;
 
 final class Tabla extends Model {}
 ```
@@ -254,7 +254,7 @@ Si desea que su clase `Tabla` apunte a otra tabla, solo tiene que definirla de e
 ```php
 namespace DLUnire\Models;
 
-use DLTools\Database\Model;
+use DLCore\Database\Model;
 
 final class Tabla extends Model {
     protected static ?string $table = "otra_tabla";
@@ -272,7 +272,7 @@ Para obtener una lista de usuarios, asegúrese de que su clase sea `PascalCase` 
 ```php
 namespace DLUnire\Models;
 
-use DLTools\Database\Model;
+use DLCore\Database\Model;
 
 class Users extends Model {}
 ```

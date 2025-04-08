@@ -1,4 +1,4 @@
-# DLUnire / Todavía en fase Alpha
+# DLUnire / en fase Beta
 
 Bienvenidos a **DLUnire**, un framework que se está desarrollando para transformar la manera en que construyes aplicaciones y soluciones ¿Alguna vez has deseado tener la capacidad de ensamblar tus proyectos como piezas de rompecabezas, creando soluciones únicas y personalizadas? Con **DLUnire**, esa visión se convierte en realidad.
 
