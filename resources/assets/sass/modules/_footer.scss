@@ -1,0 +1,24 @@
+.footer {
+
+    background-color: rgb(18 24 28);
+    color: white;
+    padding: 20px 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: fixed;
+    margin: auto;
+    left: 0; right: 0;
+    top: auto; bottom: 0;
+
+    &__inner {
+        max-width: $max-width;
+        margin: 0 auto;
+    }
+
+    font: {
+        size: 0.9rem;
+    }
+}

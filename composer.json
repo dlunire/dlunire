@@ -1,0 +1,31 @@
+{
+    "name": "dlunire/dlunire",
+    "description": "DLUnire cuenta con un motor de plantillas, modelos, controladores y un sistema de rutas. Además, cuenta con analizador sintáctico para leer archivos `.env.type` como variables de entorno con tipos estáticos.",
+    "type": "project",
+    "license": "MIT",
+    "homepage": "https://dlunire.pro/",
+    "autoload": {
+        "psr-4": {
+            "DLUnire\\": "app/",
+            "Framework\\": "dlunire/",
+            "Boot\\": "boot/"
+        }
+    },
+    "authors": [
+        {
+            "name": "DLUnire Framework",
+            "email": "dlunireframework@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "config": {
+        "optimize-autoloader": true
+    },
+    "require": {
+        "dompdf/dompdf": "^3.0",
+        "dlunire/dlcore": "^1.0"
+    },
+    "scripts": {
+        "dev": "php -S localhost:3000 -t public/"
+    }
+}
