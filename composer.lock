@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "779e69335b5a5c6e163082a22f8c9d42",
+    "content-hash": "cb13164d5963faec2d08ae284526e09c",
     "packages": [
         {
             "name": "dflydev/dot-access-data",
@@ -83,20 +83,21 @@
         },
         {
             "name": "dlunire/dlcore",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dlunire/dlcore.git",
-                "reference": "709016e5165a28d5d890d2b1761d33d0fc3b2048"
+                "reference": "03818f524008575d91532ef85b0f92a355d517e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dlunire/dlcore/zipball/709016e5165a28d5d890d2b1761d33d0fc3b2048",
-                "reference": "709016e5165a28d5d890d2b1761d33d0fc3b2048",
+                "url": "https://api.github.com/repos/dlunire/dlcore/zipball/03818f524008575d91532ef85b0f92a355d517e1",
+                "reference": "03818f524008575d91532ef85b0f92a355d517e1",
                 "shasum": ""
             },
             "require": {
                 "dlunire/dlroute": "^1.0",
+                "dlunire/dlstorage": "^0.1.0",
                 "enshrined/svg-sanitize": "^0.16.0",
                 "league/commonmark": "^2.3",
                 "michelf/php-markdown": "^2.0",
@@ -134,9 +135,9 @@
             "homepage": "https://dlunire.pro/",
             "support": {
                 "issues": "https://github.com/dlunire/dlcore/issues",
-                "source": "https://github.com/dlunire/dlcore/tree/v1.0.0"
+                "source": "https://github.com/dlunire/dlcore/tree/v1.1.0"
             },
-            "time": "2025-04-08T16:26:01+00:00"
+            "time": "2025-05-03T17:27:11+00:00"
         },
         {
             "name": "dlunire/dlroute",
@@ -177,6 +178,43 @@
                 "source": "https://github.com/dlunire/dlroute/tree/v1.0.1"
             },
             "time": "2025-04-08T14:53:04+00:00"
+        },
+        {
+            "name": "dlunire/dlstorage",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dlunire/dlstorage.git",
+                "reference": "a5c98019542b2ad69e4e65abb7e3dedcbf260750"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dlunire/dlstorage/zipball/a5c98019542b2ad69e4e65abb7e3dedcbf260750",
+                "reference": "a5c98019542b2ad69e4e65abb7e3dedcbf260750",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DLStorage\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David E Luna M",
+                    "email": "dlunireframework@gmail.com"
+                }
+            ],
+            "description": "Librería de almacenamiento de datos binarios, optimizada para su integración con el framework DLUnire. Permite almacenar, gestionar y recuperar datos en formatos binarios de manera eficiente.\"version\": \"v0.1.0\"",
+            "support": {
+                "issues": "https://github.com/dlunire/dlstorage/issues",
+                "source": "https://github.com/dlunire/dlstorage/tree/v0.1.0"
+            },
+            "time": "2025-05-03T17:20:32+00:00"
         },
         {
             "name": "dompdf/dompdf",
@@ -504,16 +542,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.6.1",
+            "version": "2.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "d990688c91cedfb69753ffc2512727ec646df2ad"
+                "reference": "06c3b0bf2540338094575612f4a1778d0d2d5e94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/d990688c91cedfb69753ffc2512727ec646df2ad",
-                "reference": "d990688c91cedfb69753ffc2512727ec646df2ad",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/06c3b0bf2540338094575612f4a1778d0d2d5e94",
+                "reference": "06c3b0bf2540338094575612f4a1778d0d2d5e94",
                 "shasum": ""
             },
             "require": {
@@ -607,7 +645,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-12-29T14:10:59+00:00"
+            "time": "2025-04-18T21:09:27+00:00"
         },
         {
             "name": "league/config",
@@ -964,16 +1002,16 @@
         },
         {
             "name": "phpmailer/phpmailer",
-            "version": "v6.9.3",
+            "version": "v6.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "2f5c94fe7493efc213f643c23b1b1c249d40f47e"
+                "reference": "bf74d75a1fde6beaa34a0ddae2ec5fce0f72a144"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/2f5c94fe7493efc213f643c23b1b1c249d40f47e",
-                "reference": "2f5c94fe7493efc213f643c23b1b1c249d40f47e",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/bf74d75a1fde6beaa34a0ddae2ec5fce0f72a144",
+                "reference": "bf74d75a1fde6beaa34a0ddae2ec5fce0f72a144",
                 "shasum": ""
             },
             "require": {
@@ -1033,7 +1071,7 @@
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
             "support": {
                 "issues": "https://github.com/PHPMailer/PHPMailer/issues",
-                "source": "https://github.com/PHPMailer/PHPMailer/tree/v6.9.3"
+                "source": "https://github.com/PHPMailer/PHPMailer/tree/v6.10.0"
             },
             "funding": [
                 {
@@ -1041,7 +1079,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-24T18:04:13+00:00"
+            "time": "2025-04-24T15:19:31+00:00"
         },
         {
             "name": "psr/event-dispatcher",
@@ -1227,16 +1265,16 @@
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.31.0",
+            "version": "v1.32.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "60328e362d4c2c802a54fcbf04f9d3fb892b4cf8"
+                "reference": "0cc9dd0f17f61d8131e7df6b84bd344899fe2608"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/60328e362d4c2c802a54fcbf04f9d3fb892b4cf8",
-                "reference": "60328e362d4c2c802a54fcbf04f9d3fb892b4cf8",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/0cc9dd0f17f61d8131e7df6b84bd344899fe2608",
+                "reference": "0cc9dd0f17f61d8131e7df6b84bd344899fe2608",
                 "shasum": ""
             },
             "require": {
@@ -1287,7 +1325,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.31.0"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.32.0"
             },
             "funding": [
                 {
@@ -1303,7 +1341,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-09T11:45:10+00:00"
+            "time": "2025-01-02T08:10:11+00:00"
         }
     ],
     "packages-dev": [],

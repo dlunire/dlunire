@@ -23,7 +23,7 @@
     },
     "require": {
         "dompdf/dompdf": "^3.0",
-        "dlunire/dlcore": "^1.0"
+        "dlunire/dlcore": "^1.1"
     },
     "scripts": {
         "dev": "php -S localhost:3000 -t public/"

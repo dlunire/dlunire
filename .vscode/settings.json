@@ -1,3 +1,11 @@
 {
-    "php.version": "8.2"
+    "php.version": "8.2",
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "composer.json"
+            ],
+            "url": "./.vscode/composer-schema.json"
+        }
+    ]
 }
