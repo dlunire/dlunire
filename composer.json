@@ -13,8 +13,9 @@
     },
     "authors": [
         {
-            "name": "DLUnire Framework",
-            "email": "dlunireframework@gmail.com"
+            "name": "David E Luna M (Códigos del Futuro, DLUnire Framework)",
+            "email": "dlunireframework@gmail.com",
+            "role": "Founder & Developer Software"
         }
     ],
     "minimum-stability": "stable",
