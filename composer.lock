@@ -87,12 +87,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dlunire/dlcore.git",
-                "reference": "c8e97acc0d78828e762d2cdf8313d9302aca50db"
+                "reference": "05a29719452bcbb87508aad9f86401703ded4d70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dlunire/dlcore/zipball/c8e97acc0d78828e762d2cdf8313d9302aca50db",
-                "reference": "c8e97acc0d78828e762d2cdf8313d9302aca50db",
+                "url": "https://api.github.com/repos/dlunire/dlcore/zipball/05a29719452bcbb87508aad9f86401703ded4d70",
+                "reference": "05a29719452bcbb87508aad9f86401703ded4d70",
                 "shasum": ""
             },
             "require": {
@@ -137,7 +137,7 @@
                 "issues": "https://github.com/dlunire/dlcore/issues",
                 "source": "https://github.com/dlunire/dlcore/tree/v1.1.0"
             },
-            "time": "2025-05-04T13:48:47+00:00"
+            "time": "2025-05-11T11:30:11+00:00"
         },
         {
             "name": "dlunire/dlroute",
@@ -185,12 +185,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dlunire/dlstorage.git",
-                "reference": "89660f9877d969189aae22a95f3789dc233d90c0"
+                "reference": "3222ee2a6b073e08a79a8a0f44472e0e315371a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dlunire/dlstorage/zipball/89660f9877d969189aae22a95f3789dc233d90c0",
-                "reference": "89660f9877d969189aae22a95f3789dc233d90c0",
+                "url": "https://api.github.com/repos/dlunire/dlstorage/zipball/3222ee2a6b073e08a79a8a0f44472e0e315371a2",
+                "reference": "3222ee2a6b073e08a79a8a0f44472e0e315371a2",
                 "shasum": ""
             },
             "type": "library",
@@ -214,7 +214,7 @@
                 "issues": "https://github.com/dlunire/dlstorage/issues",
                 "source": "https://github.com/dlunire/dlstorage/tree/v0.1.0"
             },
-            "time": "2025-05-10T19:56:58+00:00"
+            "time": "2025-05-11T11:27:48+00:00"
         },
         {
             "name": "dompdf/dompdf",
