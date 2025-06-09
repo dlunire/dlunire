@@ -87,12 +87,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dlunire/dlcore.git",
-                "reference": "14e961686b8dbc947eb222e6b2191f4dd7192710"
+                "reference": "12c5c1f61813ea5f64f0572d8d2ed7503f0b912c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dlunire/dlcore/zipball/14e961686b8dbc947eb222e6b2191f4dd7192710",
-                "reference": "14e961686b8dbc947eb222e6b2191f4dd7192710",
+                "url": "https://api.github.com/repos/dlunire/dlcore/zipball/12c5c1f61813ea5f64f0572d8d2ed7503f0b912c",
+                "reference": "12c5c1f61813ea5f64f0572d8d2ed7503f0b912c",
                 "shasum": ""
             },
             "require": {
@@ -137,7 +137,7 @@
                 "issues": "https://github.com/dlunire/dlcore/issues",
                 "source": "https://github.com/dlunire/dlcore/tree/v1.1.0"
             },
-            "time": "2025-05-11T13:48:50+00:00"
+            "time": "2025-06-09T19:49:00+00:00"
         },
         {
             "name": "dlunire/dlroute",
@@ -185,12 +185,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dlunire/dlstorage.git",
-                "reference": "cf8414d78f27768c2f09cff484e23cb9476a546e"
+                "reference": "1b8de2ed3dc74499824b56ab6e252e430c3399b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dlunire/dlstorage/zipball/cf8414d78f27768c2f09cff484e23cb9476a546e",
-                "reference": "cf8414d78f27768c2f09cff484e23cb9476a546e",
+                "url": "https://api.github.com/repos/dlunire/dlstorage/zipball/1b8de2ed3dc74499824b56ab6e252e430c3399b2",
+                "reference": "1b8de2ed3dc74499824b56ab6e252e430c3399b2",
                 "shasum": ""
             },
             "type": "library",
@@ -214,7 +214,7 @@
                 "issues": "https://github.com/dlunire/dlstorage/issues",
                 "source": "https://github.com/dlunire/dlstorage/tree/v0.1.0"
             },
-            "time": "2025-05-11T13:17:55+00:00"
+            "time": "2025-06-09T16:24:27+00:00"
         },
         {
             "name": "dompdf/dompdf",
@@ -916,16 +916,16 @@
         },
         {
             "name": "nette/utils",
-            "version": "v4.0.6",
+            "version": "v4.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "ce708655043c7050eb050df361c5e313cf708309"
+                "reference": "e67c4061eb40b9c113b218214e42cb5a0dda28f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/ce708655043c7050eb050df361c5e313cf708309",
-                "reference": "ce708655043c7050eb050df361c5e313cf708309",
+                "url": "https://api.github.com/repos/nette/utils/zipball/e67c4061eb40b9c113b218214e42cb5a0dda28f2",
+                "reference": "e67c4061eb40b9c113b218214e42cb5a0dda28f2",
                 "shasum": ""
             },
             "require": {
@@ -996,9 +996,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/utils/issues",
-                "source": "https://github.com/nette/utils/tree/v4.0.6"
+                "source": "https://github.com/nette/utils/tree/v4.0.7"
             },
-            "time": "2025-03-30T21:06:30+00:00"
+            "time": "2025-06-03T04:55:08+00:00"
         },
         {
             "name": "phpmailer/phpmailer",
@@ -1198,16 +1198,16 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v3.5.1",
+            "version": "v3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "74c71c939a79f7d5bf3c1ce9f5ea37ba0114c6f6"
+                "reference": "63afe740e99a13ba87ec199bb07bbdee937a5b62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/74c71c939a79f7d5bf3c1ce9f5ea37ba0114c6f6",
-                "reference": "74c71c939a79f7d5bf3c1ce9f5ea37ba0114c6f6",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/63afe740e99a13ba87ec199bb07bbdee937a5b62",
+                "reference": "63afe740e99a13ba87ec199bb07bbdee937a5b62",
                 "shasum": ""
             },
             "require": {
@@ -1220,7 +1220,7 @@
                     "name": "symfony/contracts"
                 },
                 "branch-alias": {
-                    "dev-main": "3.5-dev"
+                    "dev-main": "3.6-dev"
                 }
             },
             "autoload": {
@@ -1245,7 +1245,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.5.1"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.6.0"
             },
             "funding": [
                 {
@@ -1261,7 +1261,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-25T14:20:29+00:00"
+            "time": "2024-09-25T14:21:43+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
