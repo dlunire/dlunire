@@ -1,12 +1,16 @@
 # DLUnire Framework — Biografía del Proyecto
 
-**DLUnire** es un **framework** PHP moderno diseñado para ofrecer una experiencia de desarrollo backend sencilla, elegante y productiva. Inspirado en herramientas como Laravel, DLUnire incorpora un sistema de plantillas con directivas personalizadas, una estructura modular clara, y soporte para programación orientada a objetos con tipado fuerte.
+**DLUnire** es un **framework** PHP moderno diseñado para ofrecer una experiencia de desarrollo backend sencilla, elegante y productiva. Inspirado en herramientas como Laravel, `DLUnire` incorpora un sistema de plantillas con directivas personalizadas, una estructura modular clara, y soporte para programación orientada a objetos con tipado fuerte.
 
 ---
 
+## Desarrollador del proyecto
+
+Este proyecto ha sido desarrollado por David E Luna M, creador de iniciativas como "Códigos del Futuro" (@cdelfuturo) y del Framework DLUnire, una herramienta orientada al desarrollo web que integra funcionalidades avanzadas tanto en el backend como en el frontend.
+
 ## Filosofía del Proyecto
 
-DLUnire busca ser una herramienta de desarrollo rápida, eficiente y estructurada para aplicaciones web pequeñas o medianas, con una sintaxis comprensible y una arquitectura ligera. Gracias a su estructura intuitiva, puede ser adoptado fácilmente tanto por desarrolladores nuevos como por programadores con experiencia en PHP.
+`DLUnire` busca ser una herramienta de desarrollo rápida, eficiente y estructurada para aplicaciones web pequeñas o medianas, con una sintaxis comprensible y una arquitectura ligera. Gracias a su estructura intuitiva, puede ser adoptado fácilmente tanto por desarrolladores nuevos como por programadores con experiencia en PHP.
 
 ---
 
@@ -89,9 +93,9 @@ Soporta parámetros dinámicos, captura automática y subida de archivos.
 Los controladores heredan de una clase base `Framework\Config\Controller`. Permiten acceder a valores de la petición de forma segura:
 
 ```php
-$values = $this->get_values();
-$email  = $this->get_email('email');
-$uuid   = $this->get_uuid('uuid');
+$values = $this->get_values(); // Devuelve los campos del formulario o JSON enviado a través del cliente HTTP
+$email  = $this->get_email('email'); // "email" es el campo del formulario donde se envía el correo electrónico. Valida automática el correo.
+$uuid   = $this->get_uuid('uuid'); // "uuid" es el campo del formulario que valida el formato UUIDv4.
 ```
 
 ---
@@ -107,13 +111,15 @@ final class Users extends Model {}
 Esto habilita consultas como:
 
 ```php
-$users = Users::get();
-$users = Users::paginate($page, $rows);
+$users = Users::get(); // Devuelve los registros de la base de datos
+$users = Users::paginate($page, $rows); // Devuelve los registros de la base de datos por página.
 ```
 
 La clase define automáticamente la tabla si su nombre coincide. También puedes asignarla manualmente con:
 
 ```php
+# Puedes establecer un nombre diferente de tabla aquí. Sin embargo, puedes definir una
+# consulta aquí también, que será convertida automáticamente en vista:
 protected static ?string $table = "otra_tabla";
 ```
 
