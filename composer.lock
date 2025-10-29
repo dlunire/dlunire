@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd96c761e02e39841ef71b3a62b1c20c",
+    "content-hash": "1143bceabeb7f083c66fc4f7bdb9cf0d",
     "packages": [
         {
             "name": "dflydev/dot-access-data",
@@ -83,16 +83,16 @@
         },
         {
             "name": "dlunire/dlcore",
-            "version": "v1.1.1",
+            "version": "v1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dlunire/dlcore.git",
-                "reference": "021190992799b778d4362eec8564c5948bdc2538"
+                "reference": "b044a1d3fe11fa47354f78d625dabaf81bd8c689"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dlunire/dlcore/zipball/021190992799b778d4362eec8564c5948bdc2538",
-                "reference": "021190992799b778d4362eec8564c5948bdc2538",
+                "url": "https://api.github.com/repos/dlunire/dlcore/zipball/b044a1d3fe11fa47354f78d625dabaf81bd8c689",
+                "reference": "b044a1d3fe11fa47354f78d625dabaf81bd8c689",
                 "shasum": ""
             },
             "require": {
@@ -135,22 +135,22 @@
             "homepage": "https://dlunire.pro/",
             "support": {
                 "issues": "https://github.com/dlunire/dlcore/issues",
-                "source": "https://github.com/dlunire/dlcore/tree/v1.1.1"
+                "source": "https://github.com/dlunire/dlcore/tree/v1.1.2"
             },
-            "time": "2025-08-17T19:58:26+00:00"
+            "time": "2025-10-29T11:32:49+00:00"
         },
         {
             "name": "dlunire/dlroute",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dlunire/dlroute.git",
-                "reference": "e7f1cf19771dac95650fe05a5ddfc2fa389e844f"
+                "reference": "2287497efd9944884a609e433d12a75def604158"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dlunire/dlroute/zipball/e7f1cf19771dac95650fe05a5ddfc2fa389e844f",
-                "reference": "e7f1cf19771dac95650fe05a5ddfc2fa389e844f",
+                "url": "https://api.github.com/repos/dlunire/dlroute/zipball/2287497efd9944884a609e433d12a75def604158",
+                "reference": "2287497efd9944884a609e433d12a75def604158",
                 "shasum": ""
             },
             "require": {
@@ -175,9 +175,9 @@
             "description": "Sistema de rutas simple, eficiente y flexible. Úsalo con DLUnire o intégralo fácilmente en cualquier proyecto PHP",
             "support": {
                 "issues": "https://github.com/dlunire/dlroute/issues",
-                "source": "https://github.com/dlunire/dlroute/tree/v1.0.1"
+                "source": "https://github.com/dlunire/dlroute/tree/v1.0.2"
             },
-            "time": "2025-04-08T14:53:04+00:00"
+            "time": "2025-10-29T11:22:47+00:00"
         },
         {
             "name": "dlunire/dlstorage",
