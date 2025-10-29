@@ -145,12 +145,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dlunire/dlroute.git",
-                "reference": "2287497efd9944884a609e433d12a75def604158"
+                "reference": "acbb44d9047813006c7b19410f683b54d2b50131"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dlunire/dlroute/zipball/2287497efd9944884a609e433d12a75def604158",
-                "reference": "2287497efd9944884a609e433d12a75def604158",
+                "url": "https://api.github.com/repos/dlunire/dlroute/zipball/acbb44d9047813006c7b19410f683b54d2b50131",
+                "reference": "acbb44d9047813006c7b19410f683b54d2b50131",
                 "shasum": ""
             },
             "require": {
@@ -177,7 +177,7 @@
                 "issues": "https://github.com/dlunire/dlroute/issues",
                 "source": "https://github.com/dlunire/dlroute/tree/v1.0.2"
             },
-            "time": "2025-10-29T11:22:47+00:00"
+            "time": "2025-10-29T12:50:10+00:00"
         },
         {
             "name": "dlunire/dlstorage",
