@@ -82,6 +82,20 @@ DLUnire soporta tres formas de definir rutas:
 
 Soporta parámetros dinámicos, captura automática y subida de archivos.
 
+### Definición de tipo en los parámetros de rutas
+
+Puede definir un tipo de datos en la ruta de esta forma:
+
+```php
+DLRoute::get('/api/user/{uuid}', [UserController::class, 'getUser'])->filter_by_type([
+    'uuid' => 'uuid',
+]);
+```
+
+### Explicación del método `filter_by_type()`
+
+El método `filter_by_type()` es una herramienta opcional que permite validar y filtrar los parámetros de la ruta por su tipo. En este ejemplo, se valida que el parámetro `uuid` sea del tipo `uuid`. Aunque no es obligatorio, se recomienda su uso para garantizar la correcta validación de los datos.
+
 ---
 
 ## Controladores
