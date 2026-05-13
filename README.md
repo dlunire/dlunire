@@ -127,7 +127,7 @@ DLUnire aún está en desarrollo activo. La documentación completa está en pro
 
 ## Enlaces de interés
 
-- [Sitio Web Oficial](https://dlunire.dev "DLUnire Framework")
+- [Sitio Web Oficial](https://dlunire.dev "DLUnire")
 - 🌐 [Repositorio del Framework](https://github.com/dlunire/dlunire)
 - 📦 Cree su aplicación así:  
   ```bash
