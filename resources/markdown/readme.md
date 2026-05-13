@@ -1,14 +1,14 @@
-## Bienvenido a este Mini Framework PHP
+## Bienvenido a DLUnire
 
 ---
 
 > **Importante:** la documentación aún no se ha terminado. En la medida de lo posible, iré actualizando la documentación de cómo funciona esta herramienta.
 > De hecho, cuenta con un motor de plantillas similar a Laravel y cuenta con directivas.
 >
-> Puede [obtener el Framework aqui](https://github.com/dunire/dlunire "Framework DLUnire") o escribiendo el siguiente comando en la terminal:
+> Puede [obtener DLUnire aquí](https://github.com/dlunire/dlunire "Framework DLUnire") o escribiendo el siguiente comando en la terminal:
 >
 > ```bash
-> composer create-project dunire/dlunire tu-app
+> composer create-project dlunire/dlunire tu-app
 > ```
 >
 > Antes de usar esta herramienta, debes instalar una extensión para **Visual Studio Code** para obtener el resaltador de sintaxis de las variables de entorno con tipos estáticos.
@@ -16,7 +16,7 @@
 >
 > ### Instalación del resaltador de sintaxis de las Variables de Entorno
 >
-> Vaya al instalador de extensiones de **Visual Studio Code** y busque `DL Typed Environment` y si no aparece, [visite este enlace para descargar la extensión](https://marketplace.visualstudio.com/items?itemName=dlunamontilla.envtype "Resaltador de sintaxis").
+> Vaya al instalador de extensiones de **Visual Studio Code** y busque `dlunire` y si no aparece, [visite este enlace para descargar la extensión](https://open-vsx.org/extension/dlunire/dlunire-envtype "Resaltador de sintaxis").
 >
 > ### Instalación de SASS
 >
@@ -51,7 +51,7 @@ Raíz /
 Para crear una aplicación con esta herramienta, debe escribir el siguiente comando:
 
 ```bash
-composer create-project dunire/dlunire tu-app
+composer create-project dlunire/dlunire tu-app
 ```
 
 Y luego, del paso anterior, solo tienes que correrla:
