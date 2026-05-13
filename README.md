@@ -55,7 +55,9 @@ Raíz /
 
 Para mejorar la experiencia de desarrollo, se recomienda instalar la extensión para VS Code:  
 🔌 `DL Typed Environment`  
-[Descargar desde Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=dlunamontilla.envtype)
+[Descargar desde Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=dlunire.dlunire-envtype)
+
+O directamente de [Open VSX](https://open-vsx.org/extension/dlunire/dlunire-envtype "DL Typed Environment")
 
 ---
 
