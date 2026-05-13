@@ -117,6 +117,18 @@ La clase define automáticamente la tabla si su nombre coincide. También puedes
 protected static ?string $table = "otra_tabla";
 ```
 
+Pero también puede crear una "vista" de esta forma:
+
+```php
+protected static ?string $table = "tu consulta sql";
+```
+
+Es decir, algo como esto:
+
+```php
+protected static ?string $table = "SELECT * FROM tabla WHERE record_status = :record_status";
+```
+
 ---
 
 ## Visión a futuro
