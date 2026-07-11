@@ -43,6 +43,10 @@
     },
     "scripts": {
         "dev": "php -S localhost:3000 -t public/",
-        "test": "phpunit --colors=always"
+        "test": "phpunit --colors=always",
+        "setup-env": "@php bin/setup-env.php",
+        "post-create-project-cmd": [
+            "@php bin/setup-env.php"
+        ]
     }
 }

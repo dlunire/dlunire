@@ -32,11 +32,13 @@ El skeleton se mantiene **deliberadamente pequeño**. Añada carpetas solo cuand
 │   ├── Config/             # Controller, Token, Environment
 │   ├── Errors/
 │   └── Requests/
+├── bin/
+│   └── setup-env.php       # post-create-project: crea .env.type (+ spinner)
 ├── docs/tutorial/          # Este tutorial
 ├── tests/                  # PHPUnit
 ├── .env.type.example
 ├── LICENSE                 # AGPL-3.0-or-later
-├── composer.json           # license: AGPL-3.0-or-later
+├── composer.json           # license: AGPL-3.0-or-later; post-create-project-cmd
 └── vendor/                 # Composer (dlcore → dlroute, dlstorage)
 ```
 

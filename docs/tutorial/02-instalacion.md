@@ -12,13 +12,26 @@
 ```bash
 composer create-project dlunire/dlunire mi-app
 cd mi-app
-cp .env.type.example .env.type
 composer run dev
+```
+
+Al terminar `create-project`, Composer ejecuta **`bin/setup-env.php`**
+(`post-create-project-cmd`):
+
+- Si no hay `.env.type`, lo crea desde `.env.type.example`.
+- Si ya existe, no lo sobrescribe.
+- En terminal interactiva muestra un **spinner** de progreso.
+
+Manual (mismo script):
+
+```bash
+composer run setup-env
+# o: php bin/setup-env.php
 ```
 
 Document root: **`public/`**. URL por defecto: `http://localhost:3000/`.
 
-Equivalente:
+Equivalente al servidor:
 
 ```bash
 php -S localhost:3000 -t public/

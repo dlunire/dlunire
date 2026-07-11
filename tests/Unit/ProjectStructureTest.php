@@ -61,4 +61,19 @@ final class ProjectStructureTest extends TestCase {
         $readme = (string) file_get_contents($root . '/README.md');
         $this->assertStringContainsString('AGPL-3.0-or-later', $readme);
     }
+
+    public function test_setup_env_script_is_registered(): void {
+        $root = dirname(__DIR__, 2);
+        $this->assertFileExists($root . '/bin/setup-env.php');
+
+        $composer = json_decode((string) file_get_contents($root . '/composer.json'), true);
+        $this->assertIsArray($composer);
+        $scripts = $composer['scripts'] ?? [];
+        $this->assertArrayHasKey('post-create-project-cmd', $scripts);
+        $this->assertArrayHasKey('setup-env', $scripts);
+
+        $post = $scripts['post-create-project-cmd'];
+        $flat = is_array($post) ? implode(' ', $post) : (string) $post;
+        $this->assertStringContainsString('bin/setup-env.php', $flat);
+    }
 }

@@ -22,14 +22,23 @@ del skeleton); el uso principal es **backend y APIs**.
 ```bash
 composer create-project dlunire/dlunire mi-app
 cd mi-app
-cp .env.type.example .env.type
+# Tras create-project se ejecuta bin/setup-env.php (crea .env.type si no existe)
 # Edite .env.type (base de datos, prefijo, etc.)
 composer run dev
 ```
 
+Al crear el proyecto, Composer corre el script **`post-create-project-cmd`**:
+genera `.env.type` copiando `.env.type.example` (con spinner en terminal interactiva).
+Si el archivo ya existe, no lo sobrescribe. También puede lanzarlo a mano:
+
+```bash
+composer run setup-env
+# o: php bin/setup-env.php
+```
+
 Abra `http://localhost:3000/`. Document root: `public/`.
 
-Equivalente:
+Equivalente al servidor de desarrollo:
 
 ```bash
 php -S localhost:3000 -t public/
