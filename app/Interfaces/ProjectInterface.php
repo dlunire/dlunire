@@ -23,7 +23,9 @@ interface ProjectInterface {
     /**
      * Corre todo el proyecto.
      *
+     * @param bool $autoload_routes Si se cargan automáticamente las rutas en `routes/`
+     *                              (mismo contrato que {@see \DLCore\Boot\Project::run}).
      * @return void
      */
-    public static function run(): void;
+    public static function run(bool $autoload_routes = true): void;
 }

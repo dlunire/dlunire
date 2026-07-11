@@ -17,7 +17,7 @@ ini_set("display_errors", 1);
 use Boot\Project;
 use Framework\Errors\DLExceptionHandler;
 
-include dirname(__DIR__) . "/vendor/autoload.php";
+include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 set_exception_handler([DLExceptionHandler::class, 'handle']);
 

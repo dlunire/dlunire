@@ -46,6 +46,13 @@ final class ProjectStructureTest extends TestCase {
     public function test_boot_project_class_is_autoloadable(): void {
         $this->assertTrue(class_exists(\Boot\Project::class));
         $this->assertTrue(method_exists(\Boot\Project::class, 'run'));
+
+        $method = new \ReflectionMethod(\Boot\Project::class, 'run');
+        $this->assertSame(1, $method->getNumberOfParameters());
+        $param = $method->getParameters()[0];
+        $this->assertSame('autoload_routes', $param->getName());
+        $this->assertTrue($param->isDefaultValueAvailable());
+        $this->assertTrue($param->getDefaultValue());
     }
 
     public function test_welcome_controller_is_autoloadable(): void {

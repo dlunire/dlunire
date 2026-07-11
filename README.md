@@ -210,6 +210,8 @@ Guía progresiva (API first, bootstrap, rutas, ORM, licencia):
 
 - [ ] **Publicar la nueva versión del skeleton** (`dlunire/dlunire`) cuando estén listos los cambios en el **núcleo** (`dlunire/dlcore`) y, si aplica, en el **enrutador** (`dlunire/dlroute`). Hasta entonces no hay release de esta línea de trabajo.
 
+Los cambios ya preparados para ese release están en **[CHANGELOG.md](CHANGELOG.md)** bajo **`[Unreleased]`**.
+
 ## Enlaces
 
 | Recurso | URL |
@@ -218,6 +220,7 @@ Guía progresiva (API first, bootstrap, rutas, ORM, licencia):
 | Tienda / comercial | https://store.dlunire.dev |
 | Repositorio | https://github.com/dlunire/dlunire |
 | Tutorial skeleton | [docs/tutorial/](docs/tutorial/README.md) |
+| Changelog | [CHANGELOG.md](CHANGELOG.md) |
 | Tutorial kernel (DLCore) | https://github.com/dlunire/dlcore/blob/master/docs/tutorial/README.md |
 | Tutorial DLRoute | https://github.com/dlunire/dlroute/blob/master/docs/tutorial/README.md |
 | Tutorial DLStorage | https://github.com/dlunire/dlstorage |
