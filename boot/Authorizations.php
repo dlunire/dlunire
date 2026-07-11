@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * DLUnire
+ * Copyright (C) 2026 David E Luna M
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * @license AGPL-3.0-or-later
+ */
+
 namespace Boot;
 
 use DLRoute\Server\DLServer;
@@ -35,11 +47,12 @@ class Authorizations implements AuthorizationsInterface {
 
             $domain = trim($domain);
 
-            if (empty($domain)) {
+            if ($domain === '') {
                 continue;
             }
 
-            $pattern = "/((http:\/{2}|https:\/{2}){$domain}\b)(:[0-9]{3,4})?/i";
+            $quoted = preg_quote($domain, '/');
+            $pattern = "/((https?:\/\/){$quoted})(:[0-9]{1,5})?/i";
 
             if (preg_match($pattern, $origin)) {
                 self::allow_origin($origin);

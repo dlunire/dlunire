@@ -15,7 +15,7 @@ use DLCore\Config\DLConfig;
  * @version 1.0.0 (release)
  * @author David E Luna M <contact@dlunire.pro>
  * @copyright 2024 David E Luna M
- * @license MIT
+ * @license AGPL-3.0-or-later
  */
 final class SystemCredentials {
     use DLConfig;
@@ -63,8 +63,16 @@ final class SystemCredentials {
     public static function load() {
         self::get_instance();
 
+        $lifetime = self::get_lifetime_seconds();
+
         ini_set('session.cookie_httponly', 1);
-        session_set_cookie_params(3600 * 24 * 30 * 6);
+        session_set_cookie_params([
+            'lifetime' => $lifetime,
+            'path' => '/',
+            'secure' => (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'),
+            'httponly' => true,
+            'samesite' => 'Lax',
+        ]);
         session_start();
 
         self::validate_time();
@@ -325,23 +333,28 @@ final class SystemCredentials {
      *
      * @return int
      */
+    /**
+     * Segundos de vida de la sesión desde `DL_LIFETIME` (por defecto 3600).
+     */
+    private static function get_lifetime_seconds(): int {
+        $lifetime = 3600;
+
+        if (isset(self::$credentials->DL_LIFETIME['value'])) {
+            $lifetime = (int) self::$credentials->DL_LIFETIME['value'];
+        }
+
+        if ($lifetime < 0) {
+            $lifetime = 0;
+        }
+
+        return $lifetime;
+    }
+
+    /**
+     * Marca de tiempo de expiración de la sesión (now + DL_LIFETIME).
+     */
     private static function get_lifetime(): int {
-        /**
-         * Tiempo de vida definida en la variable de sesión
-         * 
-         * @var integer|null $lifetime
-         */
-        $lifetime = null;
-
-        if (isset(self::$credentials->DL_LIFETIME)) {
-            $lifetime = (int) self::$credentials->DL_LIFETIME['value'] ?? 0;
-        }
-
-        if (is_null($lifetime)) {
-            $lifetime = 3600;
-        }
-
-        return time() + $lifetime;
+        return time() + self::get_lifetime_seconds();
     }
 
     /**

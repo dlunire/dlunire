@@ -12,7 +12,7 @@ use DLCore\Config\DLValues;
  * 
  * @author David E Luna M <davidlunamontilla@gmail.com>
  * @copyright 2023 David E Luna M
- * @license MIT
+ * @license AGPL-3.0-or-later
  */
 final class Request extends DLRequest {
 

@@ -13,7 +13,7 @@ use Framework\Config\Token;
  * @version 1.0.0 (release)
  * @author David E Luna M <contact@dlunire.pro>
  * @copyright 2024 David E Luna M
- * @license MIT
+ * @license AGPL-3.0-or-later
  */
 abstract class AuthBase extends DLAuth {
     use Token;

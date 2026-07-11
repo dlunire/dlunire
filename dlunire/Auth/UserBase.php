@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * DLUnire
+ * Copyright (C) 2026 David E Luna M
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as
+ * published by the Free Software Foundation, either version 3 of the
+ * License, or (at your option) any later version.
+ *
+ * @license AGPL-3.0-or-later
+ */
+
 namespace Framework\Auth;
 
 use DLRoute\Server\DLHost;
@@ -73,7 +85,7 @@ abstract class UserBase extends DLUser {
             static::$username_field ?? 'username'
         );
 
-        if ($username < 4) {
+        if (strlen($username) < 4) {
             throw new Error("El nombre de usuario debe contar, con al menos, 4 caracteres");
         }
 
@@ -101,9 +113,10 @@ abstract class UserBase extends DLUser {
         $cookie->set_secure(DLHost::is_https());
 
         $auth_options = new DLAuthOptions();
-        $auth_options->set_username_field('username');
-        $auth_options->set_password_field('password');
-        $auth_options->set_token_field('token');
+        // Columnas de la tabla (no los nombres de campos del formulario)
+        $auth_options->set_username_field(static::$username_column ?? 'username');
+        $auth_options->set_password_field(static::$password_column ?? 'password');
+        $auth_options->set_token_field(static::$token_column ?? 'token');
 
         /**
          * Indica si se ha loggeado el usuario

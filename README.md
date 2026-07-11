@@ -1,163 +1,221 @@
-# DLUnire Framework — Biografía del Proyecto
+# DLUnire
 
-**DLUnire** es un **framework** PHP moderno diseñado para ofrecer una experiencia de desarrollo backend sencilla, elegante y productiva. Inspirado en herramientas como Laravel, DLUnire incorpora un sistema de plantillas con directivas personalizadas, una estructura modular clara, y soporte para programación orientada a objetos con tipado fuerte.
+Framework PHP **orientado a API**: skeleton + kernel **DLCore**, HTTP **DLRoute** y
+almacenamiento **DLStorage**. Rutas y controladores pensados para JSON/respuestas de
+datos, ORM, `.env.type` tipado. Las plantillas HTML son opcionales (p. ej. la bienvenida
+del skeleton); el uso principal es **backend y APIs**.
 
----
-
-## Filosofía del Proyecto
-
-DLUnire busca ser una herramienta de desarrollo rápida, eficiente y estructurada para aplicaciones web pequeñas o medianas, con una sintaxis comprensible y una arquitectura ligera. Gracias a su estructura intuitiva, puede ser adoptado fácilmente tanto por desarrolladores nuevos como por programadores con experiencia en PHP.
-
----
-
-## Características destacadas
-
-- ✨ Motor de plantillas con directivas similares a Blade de Laravel.
-- 📦 Instalación vía Composer:  
-  ```bash
-  composer create-project dlunire/dlunire tu-app
-  ```
-- 🔍 Soporte para variables de entorno con tipos estáticos usando un archivo `.env.type`.
-- 🎨 Integración directa con `SASS/SCSS` para desarrollo de estilos.
-- 🚦 Sistema de rutas poderoso inspirado en Laravel, pero optimizado para simplicidad.
-- 🔐 Estructura modular para controladores, autenticación, constantes globales, helpers, interfaces, y modelos.
-- ⚙️ ORM incluido vía `DLCore\Database\Model`, con detección automática de tablas y soporte para paginación.
-- ✅ Soporte para métodos HTTP `GET`, `POST`, `PUT`, `PATCH`, y `DELETE`.
-- 🧪 Estructura lista para pruebas automatizadas.
+**Sitio:** [dlunire.dev](https://dlunire.dev) · **Tienda (licencia comercial):** [store.dlunire.dev](https://store.dlunire.dev)
 
 ---
 
-## Estructura de Directorios
+## Requisitos
 
-La estructura del proyecto está organizada de la siguiente manera:
+- PHP **≥ 8.2**
+- Composer 2
+- Extensiones habituales de PHP para web/BD (según su proyecto)
 
-```
-Raíz /
-    |- /public/        # Punto de entrada de la aplicación
-    |- /app/
-        |- /Models/
-        |- /Auth/
-        |- /Constants/
-        |- /Controllers/
-        |- /Helpers/
-        |- /Interfaces/
-    |- /routes/        # Definición de rutas sin necesidad de `require`
-    |- /resources/     # Vistas con directivas tipo Blade
-    |- /tests/         # Pruebas automatizadas
-    |- /dlunire/       # Núcleo del framework
+---
+
+## Instalación
+
+```bash
+composer create-project dlunire/dlunire mi-app
+cd mi-app
+cp .env.type.example .env.type
+# Edite .env.type (base de datos, prefijo, etc.)
+composer run dev
 ```
 
+Abra `http://localhost:3000/`. Document root: `public/`.
+
+Equivalente:
+
+```bash
+php -S localhost:3000 -t public/
+```
+
+### Extensión VS Code / Open VSX
+
+Resaltado de `.env.type`: [DL Typed Environment](https://marketplace.visualstudio.com/items?itemName=dlunire.dlunire-envtype)
+
 ---
 
-## Extensiones complementarias
+## Estructura (mínima)
 
-### Resaltador de variables de entorno
+```
+/
+├── public/           # Entrada web: index.php, style.css, welcome.js
+├── app/              # Su código: Controllers, Models, Auth, Helpers…
+├── routes/           # Rutas HTTP
+├── resources/        # Plantillas (welcome + layouts/icons)
+├── boot/             # Project::run(), CORS
+├── dlunire/          # Capa base del skeleton (Controller, sesión, etc.)
+├── tests/            # PHPUnit
+├── .env.type.example
+└── vendor/           # Composer (dlcore → dlroute, dlstorage)
+```
 
-Para mejorar la experiencia de desarrollo, se recomienda instalar la extensión para VS Code:  
-🔌 `DL Typed Environment`  
-[Descargar desde Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=dlunire.dlunire-envtype)
+Añada carpetas solo cuando las necesite (p. ej. más layouts, tests de feature).
 
-O directamente de [Open VSX](https://open-vsx.org/extension/dlunire/dlunire-envtype "DL Typed Environment")
+**`.build/`** se crea solo al ejecutar la app: DLCore compila ahí las plantillas
+(`resources/*.template.html` → PHP en caché). No la versiona; está en `.gitignore`.
+Puede borrarla cuando quiera; se regenera al siguiente request.
+
+| Capa | Paquete | Rol |
+|------|---------|-----|
+| Aplicación | `dlunire/dlunire` | Skeleton que usted personaliza |
+| Kernel | `dlunire/dlcore` | ORM, vistas, `.env.type`, correo |
+| HTTP | `dlunire/dlroute` | Rutas y peticiones |
+| Persistencia | `dlunire/dlstorage` | Binario / credenciales cifradas |
+
+`create-project` declara `dlcore`; DLRoute y DLStorage entran como dependencias transitivas.
 
 ---
 
-## Rutas HTTP
+## Inicio rápido (código)
 
-DLUnire soporta tres formas de definir rutas:
-
-1. **Como cadena de texto apuntando al controlador**:
-   ```php
-   DLRoute::get('/', "DLUnire\\Controllers\\TestController@method");
-   ```
-
-2. **Como función callback anónima**:
-   ```php
-   DLRoute::get("/", function() {
-       return view('vista');
-   });
-   ```
-
-3. **Como arreglo tipo controlador::método**:
-   ```php
-   DLRoute::get("/user/{id}", [TestController::class, 'method']);
-   ```
-
-Soporta parámetros dinámicos, captura automática y subida de archivos.
-
-### Definición de tipo en los parámetros de rutas
-
-Puede definir un tipo de datos en la ruta de esta forma:
+### Rutas (`routes/web.php`)
 
 ```php
-DLRoute::get('/api/user/{uuid}', [UserController::class, 'getUser'])->filter_by_type([
-    'uuid' => 'uuid',
-]);
+use DLRoute\Requests\DLRoute;
+
+DLRoute::get('/api/health', fn () => ['status' => 'ok']);
+
+DLRoute::get('/user/{id}', [UserController::class, 'show'])
+    ->filter_by_type(['id' => 'integer']);
 ```
 
-### Explicación del método `filter_by_type()`
+Tres formas: callback, `[Controller::class, 'method']`, o cadena `"Namespace\\Ctrl@method"`.
 
-El método `filter_by_type()` es una herramienta opcional que permite validar y filtrar los parámetros de la ruta por su tipo. En este ejemplo, se valida que el parámetro `uuid` sea del tipo `uuid`. Aunque no es obligatorio, se recomienda su uso para garantizar la correcta validación de los datos.
+### Controladores
 
----
-
-## Controladores
-
-Los controladores heredan de una clase base `Framework\Config\Controller`. Permiten acceder a valores de la petición de forma segura:
+Extienden `Framework\Config\Controller`:
 
 ```php
 $values = $this->get_values();
 $email  = $this->get_email('email');
-$uuid   = $this->get_uuid('uuid');
+```
+
+### Modelos y ORM (ejemplo rápido)
+
+En `.env.type` (además de host/usuario/clave de MySQL):
+
+```envtype
+DL_DATABASE_NAME: string = "mi_app"
+DL_DATABASE_DRIVE: string = "mysql"
+DL_PREFIX: string = "dl_"
+MULTITENANT: boolean = false
+```
+
+```php
+namespace DLUnire\Models;
+
+use DLCore\Database\Model;
+
+final class Products extends Model {}
+// Con DL_PREFIX = "dl_" → tabla dl_products
+```
+
+```php
+use DLUnire\Models\Products;
+use DLCore\Database\Model;
+
+Products::create(['product_name' => 'Teclado', 'price' => 189000]);
+$rows = Products::get(); // tope de seguridad (~1000 filas), no toda la tabla
+$items = Products::where('price', '>', '100000')->get();
+$page = Products::paginate(page: 1, rows: 20); // listados recomendados
+// $all = Products::all(); // sin tope — solo si el conjunto es acotado
+```
+
+En la bienvenida del skeleton: sección **Inicio rápido · base de datos** (`#inicio-orm`).
+
+### Entorno
+
+Copie `.env.type.example` → `.env.type`. Cada variable tiene tipo estático
+(`boolean`, `string`, `integer`, `email`, `uuid`, …).
+
+CORS (API desde otro origen) se configura con hosts separados por comas:
+
+```envtype
+DL_CORS_ORIGINS: string = "localhost,127.0.0.1,app.ejemplo.com"
+```
+
+Si se omite, se permiten `localhost` y `127.0.0.1`.
+
+---
+
+## Funcionalidades en desarrollo
+
+### DLAuth
+
+Autenticador **básico** del kernel, **en desarrollo**. Sirve para demos o pruebas muy simples.
+**No se recomienda** en aplicaciones reales ni en producción.
+
+Mientras no exista un autenticador robusto en DLUnire, use otra solución en su capa de
+aplicación (JWT, OAuth2/OIDC, librerías maduras, IdP de su infraestructura).
+
+### MULTITENANT
+
+La variable `MULTITENANT` puede declararse en `.env.type`, pero el modo SaaS
+(una base por dominio) **aún no está terminado** (depende de **DLParse**).
+
+En monoinquilino:
+
+```envtype
+MULTITENANT: boolean = false
 ```
 
 ---
 
-## Modelos
+## Licencia
 
-Definidos dentro de `app/Models`, los modelos heredan de `DLCore\Database\Model`:
+Este proyecto se distribuye bajo **AGPL-3.0-or-later**.
 
-```php
-final class Users extends Model {}
-```
+- Texto: [`LICENSE`](./LICENSE)
+- SPDX: [AGPL-3.0-or-later](https://spdx.org/licenses/AGPL-3.0-or-later.html)
 
-Esto habilita consultas como:
+Puede desarrollar y probar con libertad. Para **despliegue cerrado** a terceros por red
+sin publicar el código de su aplicación bajo AGPL, vea la oferta comercial en
+[store.dlunire.dev](https://store.dlunire.dev/).
 
-```php
-$users = Users::get();
-$users = Users::paginate($page, $rows);
-```
+---
 
-La clase define automáticamente la tabla si su nombre coincide. También puedes asignarla manualmente con:
+## Pruebas
 
-```php
-protected static ?string $table = "otra_tabla";
-```
-
-Pero también puede crear una "vista" de esta forma:
-
-```php
-protected static ?string $table = "tu consulta sql";
-```
-
-Es decir, algo como esto:
-
-```php
-protected static ?string $table = "SELECT * FROM tabla WHERE record_status = :record_status";
+```bash
+composer test
 ```
 
 ---
 
-## Visión a futuro
+## Tutorial del skeleton
 
-DLUnire aún está en desarrollo activo. La documentación completa está en proceso y nuevas funcionalidades están siendo diseñadas. El objetivo es que DLUnire evolucione hacia un microframework PHP robusto, con enfoque en extensibilidad, rendimiento y claridad sintáctica.
+Guía progresiva (API first, bootstrap, rutas, ORM, licencia):
+
+→ **[`docs/tutorial/README.md`](docs/tutorial/README.md)**
 
 ---
 
-## Enlaces de interés
+## TODO
 
-- [Sitio Web Oficial](https://dlunire.dev "DLUnire")
-- 🌐 [Repositorio del Framework](https://github.com/dlunire/dlunire)
-- 📦 Cree su aplicación así:  
-  ```bash
-  composer create-project dlunire/dlunire tu-app
-  ```
+- [ ] **Publicar la nueva versión del skeleton** (`dlunire/dlunire`) cuando estén listos los cambios en el **núcleo** (`dlunire/dlcore`) y, si aplica, en el **enrutador** (`dlunire/dlroute`). Hasta entonces no hay release de esta línea de trabajo.
+
+## Enlaces
+
+| Recurso | URL |
+|---------|-----|
+| Sitio | https://dlunire.dev |
+| Tienda / comercial | https://store.dlunire.dev |
+| Repositorio | https://github.com/dlunire/dlunire |
+| Tutorial skeleton | [docs/tutorial/](docs/tutorial/README.md) |
+| Tutorial kernel (DLCore) | https://github.com/dlunire/dlcore/blob/master/docs/tutorial/README.md |
+| Tutorial DLRoute | https://github.com/dlunire/dlroute/blob/master/docs/tutorial/README.md |
+| Tutorial DLStorage | https://github.com/dlunire/dlstorage |
+
+---
+
+## Autor
+
+**David E Luna M** · DLUnire  
+© 2026 · Todos los derechos reservados sobre la marca y materiales no cubiertos por la licencia de código.

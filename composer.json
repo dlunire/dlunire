@@ -1,9 +1,13 @@
 {
     "name": "dlunire/dlunire",
-    "description": "DLUnire cuenta con un motor de plantillas, modelos, controladores y un sistema de rutas. Además, cuenta con analizador sintáctico para leer archivos `.env.type` como variables de entorno con tipos estáticos.",
+    "description": "DLUnire — framework PHP orientado a API. Skeleton, controladores, rutas JSON, ORM, .env.type tipado. Kernel DLCore, HTTP DLRoute y almacenamiento DLStorage.",
     "type": "project",
-    "license": "MIT",
-    "homepage": "https://dlunire.pro/",
+    "license": "AGPL-3.0-or-later",
+    "homepage": "https://dlunire.dev/",
+    "support": {
+        "issues": "https://github.com/dlunire/dlunire/issues",
+        "source": "https://github.com/dlunire/dlunire"
+    },
     "autoload": {
         "psr-4": {
             "DLUnire\\": "app/",
@@ -11,22 +15,34 @@
             "Boot\\": "boot/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "David E Luna M (Códigos del Futuro (@cdelfuturo en X), DLUnire Framework)",
             "email": "dlunireframework@gmail.com",
-            "role": "Founder & Developer Software"
+            "homepage": "https://dlunire.dev",
+            "role": "Founder & Software Developer"
         }
     ],
     "minimum-stability": "stable",
     "config": {
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "sort-packages": true
     },
     "require": {
+        "php": ">=8.2",
         "dompdf/dompdf": "^3.1",
-        "dlunire/dlcore": "^1.1"
+        "dlunire/dlcore": "^2.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0 || ^12.0"
     },
     "scripts": {
-        "dev": "php -S localhost:3000 -t public/"
+        "dev": "php -S localhost:3000 -t public/",
+        "test": "phpunit --colors=always"
     }
 }

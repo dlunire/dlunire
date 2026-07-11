@@ -14,7 +14,7 @@ use Framework\Auth\AuthBase;
  * @version 0.0.1 (release)
  * @author David E Luna M <davidlunamontilla@gmail.com>
  * @copyright 2023 David E Luna M
- * @license MIT
+ * @license AGPL-3.0-or-later
  */
 class Environment {
 

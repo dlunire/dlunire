@@ -11,7 +11,7 @@ use DLRoute\Requests\DLOutput;
  * @version 1.0.0 (release)
  * @author David E Luna M <davidlunamontilla@gmail.com>
  * @copyright 2023 David E Luna M
- * @license MIT
+ * @license AGPL-3.0-or-later
  * 
  */
 class DLErrors {
