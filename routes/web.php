@@ -14,9 +14,20 @@
 
 use DLRoute\Requests\DLRoute;
 use DLUnire\Controllers\WelcomeController;
+use DLUnire\Controllers\ProductsController;
 
 /**
  * Páginas del skeleton publicadas con el framework.
- * Comercial (tienda): GET / → https://store.dlunire.dev/
+ * Comercial (tienda): https://store.dlunire.dev/
  */
 DLRoute::get('/', [WelcomeController::class, 'index']);
+DLRoute::get('/privacy-policy', [WelcomeController::class, 'privacy_policy']);
+
+DLRoute::get('/products', [ProductsController::class, 'index']);
+
+# Una ruta con definición de tipo, donde `UUID` es un
+# tipo de dato que representa un identificador único universal (UUID):
+DLRoute::get('/products/{id}', [ProductsController::class, 'show'])
+    ->filter_by_type([
+        'id' => 'uuid',
+    ]);

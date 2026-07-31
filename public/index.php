@@ -1,5 +1,4 @@
 <?php
-
 /**
  * DLUnire
  * Copyright (C) 2026 David E Luna M
@@ -11,8 +10,6 @@
  *
  * @license AGPL-3.0-or-later
  */
-
-ini_set("display_errors", 1);
 
 use Boot\Project;
 use Framework\Errors\DLExceptionHandler;

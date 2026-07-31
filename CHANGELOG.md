@@ -20,6 +20,48 @@ formato [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/).
 
 ### Added / Añadido
 
+- **Privacy policy page:** `docs/POLITICA-DATOS.md` (Ley 1581 / Colombia), view
+  `docs-politica-datos`, route `GET /privacy-policy` (`WelcomeController::privacy_policy`).
+  Linked from welcome header, footer and legal note.
+- **Política de datos:** `docs/POLITICA-DATOS.md`, plantilla `docs-politica-datos`,
+  ruta `GET /privacy-policy`. Enlaces en menú, pie y nota legal de la bienvenida.
+
+- **`$route` / `Router::to` in welcome & docs:** assets (`favicon.svg`, `style.css`,
+  `welcome.js`), home, site path `privacy-policy`, and fragments (`$route('/#…')`)
+  go through the router callable injected by `WelcomeController`. External
+  `https://…` URLs unchanged.
+- **`$route` / `Router::to` en welcome y docs:** assets, inicio, `privacy-policy` y
+  anclas vía callable del enrutador. URLs externas sin cambio.
+
+- **Welcome buttons aligned with DLCore:** flat primary/ghost (soft green fill +
+  border, no gradient/shadow/lift); same light-theme tokens and `.welcome`
+  overrides as the kernel page.
+- **Botones de bienvenida alineados con DLCore:** primary/ghost planos (relleno
+  verde suave + borde, sin gradiente/sombra/elevación); mismos tokens en tema
+  claro y overrides `.welcome`.
+
+- **Floating nav bar (DLCore design):** `header--float` + glass `header__bar`,
+  progress strip, scoped menu labels (page/site/external), metrics via
+  `getBoundingClientRect` (`--header-offset` / scroll-margin). Isotipo without
+  inline `<style>`.
+- **Barra de navegación flotante (diseño DLCore):** pastilla glass, progreso,
+  etiquetas de alcance en el menú y métricas con `getBoundingClientRect`.
+  Isotipo sin CSS inline.
+
+- **WIP section redesign:** replaced nested “En desarrollo” panels with a dedicated
+  section (`wip-card` grid for DLAuth / MULTITENANT) and a compact Composer
+  `stack-assemble` strip under architecture.
+- **Sección WIP rediseñada:** tarjetas `wip-card` (DLAuth / MULTITENANT) y franja
+  `stack-assemble` de Composer bajo arquitectura, sin paneles anidados.
+
+- **Welcome CSP + dual favicons (as DLCore):** per-request Content-Security-Policy
+  (HTTP header + meta, `$csp` / `$token` nonces on CSS/JS; `script-src`/`style-src`
+  without `'self'`). Favicons: `favicon.svg` (default/light) + `favicon-dark.svg`
+  (`prefers-color-scheme: dark`). Privacy page shares CSP; no inline styles.
+- **CSP en welcome + favicons claro/oscuro (como DLCore):** CSP por petición
+  (cabecera + meta, nonces en CSS/JS). Favicons `favicon.svg` y `favicon-dark.svg`.
+  Política de datos con la misma CSP; sin estilos inline.
+
 - **API-first orientation:** the skeleton is documented and structured as a PHP
   framework for **APIs** (JSON/data responses primary; HTML templates optional).
 - **Orientation API first:** el skeleton se documenta y estructura como framework

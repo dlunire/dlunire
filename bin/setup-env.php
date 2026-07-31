@@ -22,6 +22,8 @@
 declare(strict_types=1);
 
 $root = dirname(__DIR__);
+
+
 $example = $root . DIRECTORY_SEPARATOR . '.env.type.example';
 $target = $root . DIRECTORY_SEPARATOR . '.env.type';
 

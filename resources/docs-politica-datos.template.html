@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080a0f">
+    <meta name="description" content="Política de tratamiento de datos personales DLUnire — Ley 1581 de 2012, Colombia.">
+    <meta name="color-scheme" content="dark light">
+    <!-- CSP también se envía por cabecera HTTP (frame-ancestors solo aplica ahí). -->
+    <meta http-equiv="Content-Security-Policy" content="{{ $csp }}">
+    <title>Política de datos — DLUnire</title>
+    <link rel="icon" type="image/svg+xml" href="{{ $route('favicon.svg') }}" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="{{ $route('favicon-dark.svg') }}" media="(prefers-color-scheme: dark)" sizes="any">
+    <link rel="canonical" href="{{ $route('privacy-policy') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+        rel="stylesheet" nonce="{{ $token }}">
+    <link rel="stylesheet" href="{{ $route('style.css') }}" nonce="{{ $token }}">
+</head>
+
+<body>
+    <main class="app welcome docs-page">
+        <div class="container docs-page__inner">
+            <p class="docs-page__nav">
+                <a class="docs-page__nav-link" href="{{ $route('/') }}">← Volver a DLUnire</a>
+                <span class="docs-page__nav-sep" aria-hidden="true">·</span>
+                <a class="docs-page__nav-link docs-page__nav-link--accent" href="https://store.dlunire.dev/"
+                    target="_blank" rel="noopener noreferrer">Tienda</a>
+            </p>
+
+            <article class="panel docs-page__panel reveal">
+                <div class="markdown markdown--welcome">
+                    {!! $content !!}
+                </div>
+            </article>
+        </div>
+    </main>
+</body>
+
+</html>
