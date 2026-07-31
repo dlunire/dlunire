@@ -18,4 +18,4 @@ include dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR 
 
 set_exception_handler([DLExceptionHandler::class, 'handle']);
 
-Project::run();
+Project::run(autoload_routes: true);

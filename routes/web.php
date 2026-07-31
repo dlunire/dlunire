@@ -20,7 +20,6 @@ use DLUnire\Controllers\ProductsController;
  * Páginas del skeleton publicadas con el framework.
  * Comercial (tienda): https://store.dlunire.dev/
  */
-DLRoute::get('/', [WelcomeController::class, 'index']);
 DLRoute::get('/privacy-policy', [WelcomeController::class, 'privacy_policy']);
 
 DLRoute::get('/products', [ProductsController::class, 'index']);
