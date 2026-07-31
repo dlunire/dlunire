@@ -3,15 +3,16 @@
 namespace Framework\Config;
 
 use DLRoute\Config\Controller as BaseController;
+use DLRoute\Core\Routing\Router;
 use DLRoute\Server\DLServer;
 use Framework\Errors\DLErrors;
 use Framework\Requests\Request;
 
 /**
  * Controlador base
- * 
+ *
  * @package DLUnire\Config
- * 
+ *
  * @version 0.0.1 (release)
  * @author David E Luna M <davidlunamontilla@gmail.com>
  * @copyright 2023 David E Luna M
@@ -56,14 +57,14 @@ abstract class Controller extends BaseController {
     protected function get_random_token(): string {
         /**
          * Bytes aleatorio
-         * 
+         *
          * @var string $bytes
          */
         $bytes = random_bytes(36);
 
         /**
          * Token aleatorios
-         * 
+         *
          * @var string $token
          */
         $token = bin2hex($bytes);
@@ -79,7 +80,7 @@ abstract class Controller extends BaseController {
     protected function get_content(): string {
         /**
          * Contenido de un cliente HTTP
-         * 
+         *
          * @var string|array
          */
         $content = $this->request->get_values();
@@ -95,7 +96,7 @@ abstract class Controller extends BaseController {
     protected function get_values(): array {
         /**
          * Contenido de un cliente HTTP
-         * 
+         *
          * @var string|array
          */
         $content = $this->request->get_values();
@@ -134,7 +135,6 @@ abstract class Controller extends BaseController {
     protected function get_password(string $field): string {
         return $this->http->get_password_valid($field);
     }
-
 
     /**
      * Obtiene un valor flotante para el campo especificado.
@@ -266,5 +266,16 @@ abstract class Controller extends BaseController {
         }
 
         $_SESSION['csrf_token'] = null;
+    }
+
+    /**
+     * Obtiene la URL de una ruta específica utilizando el enrutador.
+     *
+     * @param string $uri La ruta a la que se desea redirigir.
+     *
+     * @return string La URL de la ruta especificada.
+     */
+    public function to(string $uri): string {
+        return Router::to($uri);
     }
 }
