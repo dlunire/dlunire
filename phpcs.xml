@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<ruleset name="DLUnire">
+    <description>Estilo K&amp;R para DLUnire</description>
+
+    <file>app</file>
+
+    <arg name="colors" />
+    <arg value="sp" />
+
+    <rule ref="PSR12">
+        <exclude
+            name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine"
+        />
+        <exclude name="PSR2.Classes.ClassDeclaration.OpenBraceNewLine" />
+    </rule>
+
+    <!-- Llave de función/método en la misma línea -->
+    <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie" />
+
+    <!-- Llave de clase/interface/trait en la misma línea -->
+    <rule ref="Generic.Classes.OpeningBraceSameLine" />
+
+    <!-- Límite de longitud de línea: advertencia a partir de 160 caracteres -->
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="130" />
+            <property name="absoluteLineLimit" value="0" />
+        </properties>
+    </rule>
+</ruleset>

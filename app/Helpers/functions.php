@@ -12,20 +12,18 @@
  * @license AGPL-3.0-or-later
  */
 
+use DLRoute\Core\Routing\Router;
 use DLRoute\Requests\DLRequest;
-use DLRoute\Routes\RouteDebugger;
-use DLRoute\Server\DLServer;
 use DLCore\Compilers\DLView;
 use Dompdf\Dompdf;
-use Framework\Errors\DLErrors;
 
-if (!function_exists('view')) {
+if (!function_exists("view")) {
     /**
-     * Cargar una vista a partir de una plantilla.
+     * Carga una vista a partir de una plantilla y devuelve su contenido renderizado.
      *
-     * @param string $view Ruta a la vista (nombre de archivo o ruta completa)
-     * @param array $options Opcional. Variables que se pasan a la vista
-     * @return string El contenido de la vista renderizada como una cadena
+     * @param string $view Ruta a la vista (nombre de archivo o ruta completa).
+     * @param array $options Opcional. Variables disponibles dentro de la plantilla.
+     * @return string Contenido de la vista ya renderizada.
      */
     function view(string $view, array $options = []): string {
         ob_start();
@@ -36,37 +34,36 @@ if (!function_exists('view')) {
     }
 }
 
-if (!function_exists('view_pdf')) {
-
+if (!function_exists("view_pdf")) {
     /**
      * ## ¿Qué hace?
-     * 
-     * Transforma código HTML a formato PDF, a la vez que permite introducir variables a las plantillas 
-     * y cambiar el formato del documento PDF generado.
-     * 
+     *
+     * Transforma código HTML a formato PDF, permitiendo tanto introducir variables en la plantilla
+     * como configurar las opciones de salida del documento generado.
+     *
      * ### Variables (Opcional)
-     * 
-     * Para ingresar variables, debe pasar como segundo argumento un array asociativo, por ejemplo:
-     * 
+     *
+     * Para pasar variables a la plantilla, se debe indicar un array asociativo como segundo argumento:
+     *
      * ```php
      * <?php
      * ...
-     * 
+     *
      * view_pdf('ruta.vista', [
      *  "variable1" => "Valor de la variable 1",
      *  "variable2" => "Valor de la variable 2"
      * ]);
      * ```
-     * 
+     *
      * ### Configuración de salida (Opcional)
-     * 
-     * Para configurar la salida de un documento PDF debe pasar un array asociativo como tercer argumento, 
-     * por ejemplo:
-     * 
+     *
+     * Para configurar la salida del documento PDF, se debe pasar un array asociativo como tercer
+     * argumento:
+     *
      * ```php
      * <?php
      * ...
-     * 
+     *
      * view_pdf('ruta.vista', $options, [
      *  "filename" => 'document.pdf',
      *  "compress" => 1,
@@ -76,102 +73,108 @@ if (!function_exists('view_pdf')) {
      *  "encoding" => 'utf-8'
      * ]);
      * ```
-     * 
+     *
      * #### Explicación de las opciones
-     * 
-     * Lo que sigue es una breve descripción de lo anteriormente expuesto:
-     * 
-     * - **`filename`:** Opcional. Es el nombre del documento a descargar. El nombre por defecto es `document.pdf`.
-     * 
-     * - **`compress`:** Es la compresión de flujo de datos del documento PDF generado. Cuando vale `1` (predeterminado)
-     * **Dompdf** aplica la compresión de contenido, lo cual, puede ayudar reducir el tamaño del archivo, pero al mismo
-     * tiempo, aumento el uso de la CPU. Si vale `0`, entonces, no se comprimirá.
-     * 
-     * - **`attachment`: Establece el encabezado HTTP `Content-Disposition` en `attachment` cuando vale `1`. Esto hará que
-     * el navegador ofresca el contenido como un archivo descargable con el nombre definido en `filename` o uno por defecto.
-     * El valor por defecto es `0`, por lo que se cargará directarmente en el navegador (los que lo soporten) el documento generado.
-     * 
-     * - **`paper_size`:** Indica el tamaño de la hoja del documento PDF. Puede consultar [todos los tamaños en su repositorio](https://github.com/dompdf/dompdf/blob/master/src/Adapter/CPDF.php "Tamaños admitidos").
-     * - **`encoding`:** Establece la codificación de caracteres. El valor por defecto es `utf-8`.
-     * 
-     * @param string $view Vista de plantilla a ser cargada
-     * @param array|null $options Opcional. Variables disponibles en la plantilla
-     * @param array $configs Opcional. Opciones de configuración de un documento PDF.
-     * @return string
+     *
+     * - **`filename`:** Opcional. Nombre del documento a descargar. Por defecto, `document.pdf`.
+     *
+     * - **`compress`:** Controla la compresión del flujo de datos del documento PDF generado. Cuando
+     * vale `1` (predeterminado), **Dompdf** comprime el contenido, lo que puede reducir el tamaño del
+     * archivo a costa de un mayor uso de CPU. Si vale `0`, no se aplica compresión.
+     *
+     * - **`attachment`:** Establece el encabezado HTTP `Content-Disposition` en `attachment` cuando
+     * vale `1`, forzando al navegador a ofrecer el contenido como archivo descargable con el nombre
+     * definido en `filename` (o uno por defecto). El valor por defecto es `0`, en cuyo caso el
+     * documento se muestra directamente en los navegadores que lo soporten.
+     *
+     * - **`paper_size`:** Tamaño de la hoja del documento PDF. Puede consultar todos los tamaños
+     * admitidos en [Adapter/CPDF.php](https://github.com/dompdf/dompdf/blob/master/src/Adapter/CPDF.php)
+     * del repositorio de Dompdf.
+     *
+     * - **`encoding`:** Codificación de caracteres del documento. Por defecto, `utf-8`.
+     *
+     * @param string $view Vista de la plantilla a cargar.
+     * @param array|null $options Opcional. Variables disponibles en la plantilla.
+     * @param array $config Opcional. Opciones de configuración del documento PDF (ver arriba).
+     * @return string Documento PDF generado, como cadena binaria.
      */
-    function view_pdf(string $view, ?array $options = null, array $config = []): string {
+    function view_pdf(
+        string $view,
+        ?array $options = null,
+        array $config = [],
+    ): string {
         /**
          * Nombre de archivo PDF.
-         * 
+         *
          * @var string
          */
         $filename = "document.pdf";
 
-        if (array_key_exists('filename', $config)) {
-            $filename = $config['filename'];
+        if (array_key_exists("filename", $config)) {
+            $filename = $config["filename"];
         }
 
         /**
-         * Aplicar compresión de flujo de contenido. Si vale 0, no se aplicará la compresión de flujo
-         * de contenido.
-         * 
+         * Determina si se aplica compresión al flujo de contenido del PDF. Si vale `0`,
+         * no se aplicará compresión.
+         *
          * @var integer
          */
         $compress = 1;
 
-        if (array_key_exists('compress', $config)) {
-            $compress = $config['compress'];
+        if (array_key_exists("compress", $config)) {
+            $compress = $config["compress"];
         }
 
         /**
-         * Determina si se debe establecer el encabezado HTTP `Content-Disposition` en `attachement`. Cuando
-         * vale `1`, entonces, se establece en `attachment`, provocando que el navegador Web ofrezca un PDF
-         * descargable.
-         * 
-         * Si vale `0`, entonces, el PDF se mostrará directamente en los navegadores que lo soporten.
+         * Determina si se establece el encabezado HTTP `Content-Disposition` en `attachment`.
+         * Cuando vale `1`, el navegador ofrece el PDF como archivo descargable. Si vale `0`,
+         * el PDF se muestra directamente en los navegadores que lo soporten.
+         *
+         * @var integer
          */
         $attachment = 0;
 
-        if (array_key_exists('attachment', $config)) {
-            $attachment = $config['attachment'];
+        if (array_key_exists("attachment", $config)) {
+            $attachment = $config["attachment"];
         }
 
         /**
          * Tamaño del lienzo que representará la hoja en el documento PDF.
-         * 
+         *
          * @var string
          */
-        $paper_size = 'a4';
+        $paper_size = "a4";
 
-        if (array_key_exists('paper_size', $config)) {
-            $paper_size = $config['paper_size'];
+        if (array_key_exists("paper_size", $config)) {
+            $paper_size = $config["paper_size"];
         }
 
         /**
-         * Establece la orientación de la hoja.
-         * 
+         * Orientación de la hoja del documento PDF.
+         *
          * @var string
          */
         $orientation = "portrait";
 
-        if (array_key_exists('orientation', $config)) {
-            $orientation = $config['orientation'];
+        if (array_key_exists("orientation", $config)) {
+            $orientation = $config["orientation"];
         }
 
         /**
-         * Establece la codificación de caracteres para el documento PDF.
-         * 
+         * Codificación de caracteres del documento PDF.
+         *
          * @var string
          */
         $encoding = "utf-8";
 
-        if (array_key_exists('encoding', $config)) {
-            $encoding = $config['encoding'];
+        if (array_key_exists("encoding", $config)) {
+            $encoding = $config["encoding"];
         }
 
         /**
-         * Vista cargada a partir de una plantilla.
-         * 
+         * Contenido de la vista ya renderizado a partir de la plantilla.
+         *
          * @var string
          */
         $view = view($view, $options ?? []);
@@ -184,100 +187,64 @@ if (!function_exists('view_pdf')) {
 
         return (string) $pdf->stream($filename, [
             "compress" => $compress,
-            "Attachment" => $attachment
+            "Attachment" => $attachment,
         ]);
     }
 }
 
-if (!function_exists('redirect')) {
-
+if (!function_exists("redirect")) {
     /**
-     * Redirige a un usuario a una nueva `URL`
+     * Redirige al usuario a una nueva URL y termina la ejecución del script.
      *
-     * @param string $uri URI a redirigir
-     * @param integer $code Código de redirección.
+     * @param string $uri URI a la que redirigir.
+     * @param integer $code Código de estado HTTP de la redirección. Por defecto, `302`.
      * @return never
      */
     function redirect(string $uri, int $code = 302) {
-        /**
-         * Patrón de búsqueda del código de redirección.
-         * 
-         * @var string $patern
-         */
-        $pattern = "/^[3][0-9]{2}$/";
-
-        /**
-         * Indica si el código de redirección es válido o no.
-         * 
-         * @var boolean $is_valid
-         */
-        $is_valid = preg_match($pattern, "{$code}");
-
-        if (!$is_valid) {
-            DLErrors::redirect_error();
-        }
-
-        $uri = RouteDebugger::trim_slash($uri);
-        $uri = RouteDebugger::dot_to_slash($uri);
-        $uri = RouteDebugger::clear_route($uri);
-
-        /**
-         * Ruta HTTP base.
-         * 
-         * @var string $http_host
-         */
-        $http_host = DLServer::get_http_host();
-        $http_host = rtrim($http_host, "\/");
-
-        /**
-         * URL completa
-         * 
-         * @var string $url
-         */
-        $url = "{$http_host}/{$uri}";
-        $url = RouteDebugger::url_encode($url);
+        /** @var non-empty-string $url */
+        $url = Router::to($uri);
 
         header("Location: {$url}", true, $code);
-        exit;
+        exit();
     }
 }
 
-if (!function_exists('is_valid_ref')) {
-
+if (!function_exists("is_valid_ref")) {
     /**
-     * Verifica si la referencia de origen es válida
+     * Verifica si el token CSRF enviado por el cliente coincide con el almacenado en sesión.
      *
-     * @param string $field
-     * @return boolean
+     * @param string $field Nombre del campo que contiene el token CSRF en la petición.
+     * Por defecto, `csrf-token`.
+     * @return boolean `true` si el token es válido, `false` en caso contrario.
      */
     function is_valid_ref(string $field = "csrf-token"): bool {
         /**
-         * Petición del cliente HTTP
-         * 
+         * Petición del cliente HTTP.
+         *
          * @var DLRequest $request
          */
         $request = DLRequest::get_instance();
 
         /**
-         * Valores de la petición
-         * 
+         * Valores de la petición.
+         *
          * @var array $values
          */
         $values = $request->get_values();
 
         /**
-         * Token enviado por el usuario
-         * 
+         * Token enviado por el cliente.
+         *
          * @var string|null
          */
         $csrf_token = $values[$field] ?? null;
 
         /**
-         * Token de la sesión
-         * 
-         * @var string | null
+         * Token almacenado en la sesión actual.
+         *
+         * @var string|null
          */
-        $token = $_SESSION['csrf-token'] ?? null;
+        $token = $_SESSION["csrf-token"] ?? null;
 
         if (is_null($token)) {
             return false;
@@ -287,25 +254,24 @@ if (!function_exists('is_valid_ref')) {
     }
 }
 
-if (!function_exists('regenerate_activation_code')) {
-
+if (!function_exists("regenerate_activation_code")) {
     /**
-     * Regenera el código de validación
+     * Rellena un código de activación con ceros a la izquierda hasta completar 13 dígitos.
      *
-     * @param string $activation_code Código de validación
-     * @return string
+     * @param string $activation_code Código de activación a normalizar.
+     * @return string Código de activación normalizado a 13 dígitos.
      */
     function regenerate_activation_code(string $activation_code): string {
         /**
-         * Cantidad de dígitos del código de activación.
-         * 
+         * Cantidad de dígitos del código de activación recibido.
+         *
          * @var integer $quantity
          */
         $quantity = strlen($activation_code);
 
         /**
-         * Relleno del código de validación
-         * 
+         * Relleno de ceros necesario para completar 13 dígitos.
+         *
          * @var string $fill
          */
         $fill = implode("", array_fill(0, 13 - $quantity, 0));
@@ -316,13 +282,12 @@ if (!function_exists('regenerate_activation_code')) {
     }
 }
 
-if (!function_exists('datetime')) {
-
+if (!function_exists("datetime")) {
     /**
-     * Convierte fecha en forma UNIX a formato Fecha y Hora (datetime)
+     * Convierte una marca de tiempo UNIX al formato de fecha y hora (`Y-m-d H:i:s`).
      *
-     * @param integer $timestamp Fecha en forma UNIX
-     * @return string
+     * @param integer $timestamp Marca de tiempo UNIX a convertir.
+     * @return string Fecha y hora en formato `Y-m-d H:i:s`.
      */
     function datetime(int $timestamp): string {
         return date("Y-m-d H:i:s", $timestamp);
