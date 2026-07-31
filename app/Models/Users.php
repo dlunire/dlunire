@@ -17,12 +17,11 @@ namespace DLUnire\Models;
 use Framework\Auth\UserBase;
 
 class Users extends UserBase {
-
     // Descomente la siguiente línea para establecer una tabla de usuarios personalizada:
     // protected static ?string $table = 'tabla_usuario_personalizada';
 
     // ------------------------------------------------------------------------
-    // Descomente las líneas donde desee establecer valores personalizados para 
+    // Descomente las líneas donde desee establecer valores personalizados para
     // la captura y almacenamiento de datos.
     // ------------------------------------------------------------------------
 
@@ -40,5 +39,4 @@ class Users extends UserBase {
 
     // Descomente la siguiente línea para establecer una columna de token personalizada en la tabla:
     // protected static ?string $token_column = 'columna_token_personalizo_tabla';
-
 }

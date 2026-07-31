@@ -23,8 +23,7 @@ if (!function_exists("get_token")) {
      *
      * @return string
      */
-    function get_token(): string
-    {
+    function get_token(): string {
         /**
          * Variables de entorno
          *
@@ -49,8 +48,7 @@ if (!function_exists("get_sitekey")) {
      *
      * @return string
      */
-    function get_sitekey(): string
-    {
+    function get_sitekey(): string {
         /**
          * Variables de entorno
          *
@@ -75,16 +73,14 @@ if (!function_exists("is_human")) {
      *
      * @return boolean
      */
-    function is_human(): bool
-    {
+    function is_human(): bool {
         $recaptcha = DLRecaptcha::get_instance();
         return $recaptcha->post();
     }
 }
 
 if (!function_exists("validate_ref")) {
-    function validate_ref(string $token_field = "csrf-token")
-    {
+    function validate_ref(string $token_field = "csrf-token") {
         /**
          * Peticiones del cliente HTTP
          *

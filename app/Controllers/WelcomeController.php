@@ -24,7 +24,6 @@ use Framework\Config\Controller;
  * Tienda comercial: https://store.dlunire.dev/
  */
 final class WelcomeController extends Controller {
-
     /**
      * Devuelve el callable de enrutado para plantillas (`Router::to` → `$route(...)`).
      *

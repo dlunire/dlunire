@@ -8,16 +8,15 @@ use Framework\Auth\AuthBase;
 
 /**
  * Permite saber si estamos en un entorno de producción o de desarrollo
- * 
+ *
  * @package DLUnire\Config;
- * 
+ *
  * @version 0.0.1 (release)
  * @author David E Luna M <davidlunamontilla@gmail.com>
  * @copyright 2023 David E Luna M
  * @license AGPL-3.0-or-later
  */
-class Environment {
-
+final class Environment {
     use DLConfig;
 
     /**
@@ -39,7 +38,7 @@ class Environment {
     public function is_production_environment(): bool {
         /**
          * Devuelve las credenciales establecidas en las variables de entorno.
-         * 
+         *
          * @var Credentials
          */
         $credentials = $this->get_credentials();
@@ -77,9 +76,9 @@ class Environment {
 
     /**
      * Si la clave del sitio está definidas en la variables de entorno, las devolverá.
-     * 
+     *
      * Para definirlas, debe ir a `.env.type` y agregar la siguiente línea:
-     * 
+     *
      * ```envtype
      * G_SITE_KEY: string = "<tu-clave-del-sitio>"
      * ```
@@ -89,14 +88,14 @@ class Environment {
     public function get_sitekey(): string {
         /**
          * Variables de entorno
-         * 
+         *
          * @var object $environments
          */
         $environments = $this->get_environments_as_object();
 
         /**
          * Clave del sitio
-         * 
+         *
          * @var string|null $sitekey
          */
         $sitekey = null;
@@ -122,7 +121,7 @@ class Environment {
     public static function get_instance(): self {
 
         if (!(self::$instance instanceof self)) {
-            self::$instance = new self;
+            self::$instance = new self();
         }
 
         return self::$instance;

@@ -4,4 +4,5 @@ namespace DLUnire\Models;
 
 use DLCore\Database\Model;
 
-final class Products extends Model {}
+final class Products extends Model {
+}

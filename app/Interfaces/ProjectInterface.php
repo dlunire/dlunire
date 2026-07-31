@@ -18,8 +18,6 @@ namespace DLUnire\Interfaces;
  * Corre todo el proyecto
  */
 interface ProjectInterface {
-
-
     /**
      * Corre todo el proyecto.
      *

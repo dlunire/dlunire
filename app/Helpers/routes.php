@@ -30,7 +30,7 @@ if (!function_exists('asset')) {
 
         /**
          * URL completa del archivo
-         * 
+         *
          * @var string
          */
         $url = ResourceManager::asset($uri);
@@ -50,7 +50,7 @@ if (!function_exists('route')) {
      * @return string
      */
     function route(string $uri, bool $extension = false) {
-        
+
         if (!$extension) {
             $uri = RouteDebugger::dot_to_slash($uri);
         }
@@ -60,14 +60,14 @@ if (!function_exists('route')) {
 
         /**
          * URL Base de la aplicación
-         * 
+         *
          * @var string $url
          */
         $url = DLServer::get_base_url();
-        
+
         $url = rtrim($url, "\/");
         $url = "{$url}/{$uri}";
-        
+
         return trim($url);
     }
 }

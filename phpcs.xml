@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 <ruleset name="DLUnire">
-    <description>Estilo K&amp;R para DLUnire</description>
+    <description
+    >Estilo de codificación de DLUnire: snake_case en funciones/métodos/variables, K&amp;R en llaves.</description>
 
     <file>app</file>
 
@@ -12,6 +13,7 @@
             name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine"
         />
         <exclude name="PSR2.Classes.ClassDeclaration.OpenBraceNewLine" />
+        <exclude name="PSR1.Methods.CamelCapsMethodName" />
     </rule>
 
     <!-- Llave de función/método en la misma línea -->
@@ -20,7 +22,7 @@
     <!-- Llave de clase/interface/trait en la misma línea -->
     <rule ref="Generic.Classes.OpeningBraceSameLine" />
 
-    <!-- Límite de longitud de línea: advertencia a partir de 160 caracteres -->
+    <!-- Límite de longitud de línea: advertencia a partir de 130 caracteres -->
     <rule ref="Generic.Files.LineLength">
         <properties>
             <property name="lineLimit" value="130" />
