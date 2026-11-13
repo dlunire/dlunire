@@ -1,0 +1,130 @@
+# Changelog / Registro de Cambios
+
+All notable changes to this project will be documented in this file.  
+Todos los cambios importantes de este proyecto serán documentados en este archivo.
+
+This project adheres to [Semantic Versioning](https://semver.org/) and follows
+[Keep a Changelog](https://keepachangelog.com/).  
+Este proyecto sigue [Versionado Semántico](https://semver.org/lang/es/) y el
+formato [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/).
+
+---
+
+## [v2.0.0] - 2026-11-13
+
+**Breaking release.** Reestructuración de la página de bienvenida, actualización
+de dependencias y simplificación del skeleton. La aplicación pasa a utilizar
+una SPA con Svelte para la página de bienvenida, servida desde una plantilla
+PHP mínima.
+
+### Added / Añadido
+
+- **SPA de bienvenida:** nueva interfaz desarrollada con Svelte y compilada
+  como bundle estático. Se incorporan los artefactos de compilación en `dist/`
+  (`index.html`, `index.js` e `index.css`).
+- **Content Security Policy (CSP) por nonce:** nueva política restrictiva
+  declarada mediante `<meta http-equiv="Content-Security-Policy">` en la
+  plantilla de bienvenida. Incluye `default-src 'none'`,
+  `script-src` con `strict-dynamic`, `base-uri 'none'` y `object-src 'none'`.
+- **Metadatos de la página:** se incorporan metadatos SEO, Open Graph y
+  Twitter Cards en la plantilla de bienvenida.
+- **DLAuth:** se incorpora `dlauth` `1.0.0` como dependencia del proyecto.
+
+### Changed / Cambiado
+
+- **Licencia:** el proyecto adopta la licencia **AGPL-3.0-or-later**.
+  Se actualizan los materiales correspondientes a la distribución del paquete.
+- **WelcomeController:** se simplifica a un único método `welcome()`, que
+  renderiza la vista `welcome` e inyecta `token` (UUID) y `route`
+  (`Router::to`).
+- **Gestión de CSP:** se elimina del controlador la generación del nonce
+  mediante `random_bytes()`, la construcción de la política CSP y el envío
+  de la cabecera HTTP. La política se declara ahora en la plantilla.
+- **Plantilla de bienvenida:** `welcome.template.html` se reescribe como una
+  plantilla mínima que sirve la SPA y contiene los metadatos de la página.
+- **PHP mínimo:** se eleva el requisito de PHP de `8.2` a `8.3`.
+- **Dependencias:** se sustituye `dompdf/dompdf` por `nikic/php-parser`
+  en `require`.
+- **Dependencias del ecosistema:** se actualizan `dlunire/dlcore` a `2.2.1`
+  y `dlunire/dlroute` a `2.0.3`. También se actualizan dependencias transitivas,
+  entre ellas CommonMark, PHPMailer y PHPUnit `12.5.43`.
+- **SystemCredentials:** la llamada a `setcookie()` utiliza `''` en lugar
+  de `null` para el valor de la cookie, evitando la deprecación correspondiente
+  en PHP 8.x.
+- **Token:** el PHPDoc de `$csrf_token` se actualiza a `string|null`.
+- **Código:** se normaliza el formato de los PHPDoc en `dlunire/Auth` y
+  `dlunire/Config`, y se sustituye el uso correspondiente de `new static()`
+  por `new self()`.
+- **Recursos gráficos:** se actualizan `favicon.svg`, `favicon-dark.svg` y
+  `dlunire.svg`, exportados desde Inkscape.
+- **CHANGELOG:** se incorpora el registro de la versión `v2.0.0` y se
+  reorganiza el historial de cambios.
+- **.gitignore:** se añade `commit.txt`.
+
+### Removed / Eliminado
+
+- **Controladores de ejemplo:** se elimina `ProductsController`, junto con
+  los ejemplos de paginación y de rutas con filtro UUID.
+- **Rutas de bienvenida anteriores:** se elimina `routes/welcome.php`.
+- **Rutas de demostración:** se eliminan las rutas `/privacy`, `/terms`,
+  `/cookies`, `/script` y `/styles`.
+- **Política de privacidad:** se elimina la ruta `/privacy-policy`.
+- **Rutas de productos:** se eliminan `/products` y `/products/{id}`.
+- **Métodos de WelcomeController:** se eliminan `index()` y
+  `privacy_policy()`. La entrada de bienvenida pasa a ser `welcome()`.
+
+### Breaking Changes / Cambios incompatibles
+
+- Se requiere **PHP >= 8.3**.
+- La página de bienvenida anterior, basada en vistas PHP, se sustituye por
+  una SPA servida desde una plantilla mínima.
+- `WelcomeController` deja de exponer `index()` y `privacy_policy()`;
+  el método disponible para la bienvenida es `welcome()`.
+- Se eliminan las siguientes rutas:
+  - `GET /privacy-policy`
+  - `GET /products`
+  - `GET /products/{id}`
+  - Las rutas registradas anteriormente en `routes/welcome.php`:
+    `/privacy`, `/terms`, `/cookies`, `/script` y `/styles`.
+
+---
+
+## [v1.0.3] - Desarrollo previo
+
+> **Development history / Historial de desarrollo.** Esta sección conserva
+> las notas de la etapa anterior del skeleton. Sus cambios no constituyen
+> una descripción del estado actual de `v2.0.0`. Algunas funcionalidades
+> documentadas aquí fueron sustituidas o eliminadas durante la reestructuración
+> de la bienvenida.
+
+La línea de desarrollo `v1.0.3` incluyó, entre otros trabajos:
+
+- Incorporación de la política de datos y su documentación para Colombia.
+- Uso de `$route` / `Router::to` en la bienvenida y las vistas.
+- Rediseño de botones, navegación flotante y secciones de la bienvenida.
+- Primera implementación de CSP por petición, con nonce y cabecera HTTP.
+- Incorporación de un tutorial progresivo en `docs/tutorial/`.
+- Incorporación de `bin/setup-env.php` y scripts de Composer para preparar
+  `.env.type` después de `create-project`.
+- Configuración de CORS mediante `DL_CORS_ORIGINS`.
+- Ajustes de duración de cookies de sesión en `SystemCredentials`.
+- Pruebas de estructura del proyecto con PHPUnit.
+- Integración de las fases de arranque de DLCore en `Boot\Project::run()`.
+- Orientación API-first del skeleton y simplificación de su estructura.
+- Actualización de la documentación, licencia y dependencias del proyecto.
+
+---
+
+## [v1.0.2]
+
+## [v1.0.1]
+
+## [v1.0.0]
+
+---
+
+[v2.0.0]: https://github.com/dlunire/dlunire/releases/tag/v2.0.0
+[v1.0.3]: https://github.com/dlunire/dlunire/releases/tag/v1.0.3
+[v1.0.2]: https://github.com/dlunire/dlunire/releases/tag/v1.0.2
+[v1.0.1]: https://github.com/dlunire/dlunire/releases/tag/v1.0.1
+[v1.0.0]: https://github.com/dlunire/dlunire/releases/tag/v1.0.0
