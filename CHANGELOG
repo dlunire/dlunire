@@ -13,7 +13,7 @@ formato [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/).
 ## [v2.0.0] - 2026-11-13
 
 **Breaking release.** Reestructuración de la página de bienvenida, actualización
-de dependencias y simplificación del skeleton. La aplicación pasa a utilizar
+de dependencias y cambio de licencia. La aplicación pasa a utilizar
 una SPA con Svelte para la página de bienvenida, servida desde una plantilla
 PHP mínima.
 
