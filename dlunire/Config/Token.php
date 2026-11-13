@@ -20,7 +20,6 @@ use Exception;
  * Sistema de tokens
  */
 trait Token {
-
     /**
      * Cifra una contraseña utilizando el algoritmo `Argon2id` con opciones personalizadas.
      *
@@ -42,7 +41,7 @@ trait Token {
 
         /**
          * Hash de la contraseña.
-         * 
+         *
          * @var string
          */
         $hash = password_hash($password, PASSWORD_ARGON2ID, $config);
@@ -62,14 +61,14 @@ trait Token {
     protected function get_token_app(): string {
         /**
          * bytes aleatorio.
-         * 
+         *
          * @var string
          */
         $bytes = random_bytes(100);
 
         /**
          * Token en formato hexadecimal
-         * 
+         *
          * @var string
          */
         $token = bin2hex($bytes);
@@ -86,8 +85,8 @@ trait Token {
     protected function get_csrf_token(): string {
         /**
          * Token de referencia cruzada.
-         * 
-         * @var string
+         *
+         * @var string|null
          */
         $csrf_token = null;
 
@@ -111,7 +110,7 @@ trait Token {
     protected function get_app_uuid(): string {
         /**
          * Bytes aleatorios
-         * 
+         *
          * @var string
          */
         $data = random_bytes(16);
@@ -122,7 +121,7 @@ trait Token {
 
         /**
          * Identificador UUID
-         * 
+         *
          * @var string
          */
         $uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));

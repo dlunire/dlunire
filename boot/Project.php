@@ -157,7 +157,7 @@ class Project implements ProjectInterface {
      */
     public static function run(bool $autoload_routes = true): void {
         // --- Skeleton (DLUnire) ---
-        SystemCredentials::load();
+        SystemCredentials::load();   
 
         Authorizations::register_domain(self::cors_domains());
         Authorizations::init();

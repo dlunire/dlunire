@@ -6,12 +6,11 @@ use DLRoute\Server\DLServer;
 use DLCore\Config\Credentials;
 use DLCore\Config\DLConfig;
 
-
 /**
  * Valida las credenciales del usuario autenticado
- * 
+ *
  * @package Framework\Auth
- * 
+ *
  * @version 1.0.0 (release)
  * @author David E Luna M <contact@dlunire.pro>
  * @copyright 2024 David E Luna M
@@ -47,7 +46,7 @@ final class SystemCredentials {
 
         /**
          * Credenciales de las variables de entorno
-         * 
+         *
          * @var Credentials $credentials
          */
         $credentials = $this->get_credentials();
@@ -87,14 +86,14 @@ final class SystemCredentials {
     private static function validate_origin(): void {
         /**
          * Autenticador
-         * 
+         *
          * @var AuthBase $auth
          */
         $auth = AuthBase::get_instance();
 
         /**
          * Datos de la sesión
-         * 
+         *
          * @var array $session_data
          */
         $session_data = $auth->get_session_value('auth');
@@ -136,7 +135,7 @@ final class SystemCredentials {
 
         /**
          * Agente de usuario almacenada en la sesión
-         * 
+         *
          * @var string $user_agent
          */
         $user_agent = $session_data['user_agent'];
@@ -148,7 +147,7 @@ final class SystemCredentials {
 
         /**
          * Nombre de host almacenada en la sesión
-         * 
+         *
          * @var string $hostname
          */
         $hostname = $session_data['hostname'];
@@ -160,7 +159,7 @@ final class SystemCredentials {
 
         /**
          * Nombre HTTP HOST almacenada en la sesión
-         * 
+         *
          * @var string $http_host
          */
         $http_host = $session_data['http_host'];
@@ -172,7 +171,7 @@ final class SystemCredentials {
 
         /**
          * Software del servidor almacenada en la sesión
-         * 
+         *
          * @var string $server_software
          */
         $server_software = $session_data['server_software'];
@@ -184,7 +183,7 @@ final class SystemCredentials {
 
         /**
          * Número de puerto almacenada en la variable de sesión
-         * 
+         *
          * @var integer $port
          */
         $port = (int) $session_data['port'];
@@ -198,9 +197,9 @@ final class SystemCredentials {
     }
 
     /**
-     * Mediante un token enviado previamente al cliente, valida que el 
+     * Mediante un token enviado previamente al cliente, valida que el
      * origen de la petición sea válida.
-     * 
+     *
      * El token es de un solo uso.
      *
      * @return void
@@ -209,14 +208,14 @@ final class SystemCredentials {
 
         /**
          * Autenticador
-         * 
+         *
          * @var AuthBase $auth
          */
         $auth = AuthBase::get_instance();
 
         /**
          * Token aleatorio de autenticación envaida previamente al cliente
-         * 
+         *
          * @var string $token
          */
         $token = $_COOKIE['__auth__'] ?? null;
@@ -242,7 +241,7 @@ final class SystemCredentials {
     private static function update_token_session(): void {
         /**
          * Nuevo token de sesión generado.
-         * 
+         *
          * @var string $new_token
          */
         $new_token = static::generate_unique_token();
@@ -293,7 +292,7 @@ final class SystemCredentials {
     private static function is_token_update_required(): bool {
         /**
          * Fecha y hora actual del sistema + 60 segundos o tiempo restante.
-         * 
+         *
          * @var integer $time
          */
         $time = self::get_time() - time();
@@ -313,14 +312,14 @@ final class SystemCredentials {
     private static function generate_unique_token(): string {
         /**
          * Bytes aleatorios
-         * 
+         *
          * @var string $bytes
          */
         $bytes = random_bytes(128);
 
         /**
          * Token nuevo
-         * 
+         *
          * @var string $new_token
          */
         $new_token = bin2hex($bytes);
@@ -365,14 +364,14 @@ final class SystemCredentials {
     private static function validate_time(): void {
         /**
          * Tiempo de vida de la sesión del usuario.
-         * 
+         *
          * @var integer $time;
          */
         $time = self::get_lifetime();
 
         /**
          * Datos de autenticación del usuario
-         * 
+         *
          * @var array|null $auth
          */
         $auth = &$_SESSION['auth'] ?? null;
@@ -383,7 +382,7 @@ final class SystemCredentials {
 
         /**
          * Tiempo restante de expiración de la sesión
-         * 
+         *
          * @var integer|null
          */
         $expire_time = &$auth['expire_time'] ?? null;
@@ -394,14 +393,14 @@ final class SystemCredentials {
 
         /**
          * Tiempo transcurrido desde que se inició la sesión o se actualizó el tiempo de expiración
-         * 
+         *
          * @var string $elapsed_time
          */
         $elapsed_time = $time - $expire_time;
 
         /**
          * Tiempo restante de la sesión
-         * 
+         *
          * @var integer $remaining_time
          */
         $remaining_time = ($time - time()) - $elapsed_time;
@@ -413,7 +412,7 @@ final class SystemCredentials {
 
         $auth = '';
 
-        setcookie('__auth__', null, time() - 60 * 60 * 30);
+        setcookie('__auth__', '', time() - 60 * 60 * 30);
     }
 
     /**
@@ -423,7 +422,7 @@ final class SystemCredentials {
      */
     public static function get_instance(): self {
         if (!(self::$instance instanceof self)) {
-            self::$instance = new self;
+            self::$instance = new self();
         }
 
         return self::$instance;

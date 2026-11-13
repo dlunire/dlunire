@@ -23,7 +23,6 @@ use DLCore\Auth\DLUser;
 use Error;
 
 abstract class UserBase extends DLUser {
-
     /**
      * Nombre del campo usuario del formulario
      *
@@ -53,7 +52,7 @@ abstract class UserBase extends DLUser {
     protected static ?string $password_column = null;
 
     /**
-     * Nombre de la columna tokens de la tabla de usuarios. Se recomienda usarla para 
+     * Nombre de la columna tokens de la tabla de usuarios. Se recomienda usarla para
      * facilitar el cierre de sesión en múltiples dispositivos.
      *
      * @var string|null
@@ -64,21 +63,21 @@ abstract class UserBase extends DLUser {
      * Captura del cliente HTTP las credenciales del usuario
      *
      * @return bool
-     * 
+     *
      * @throws Error
      */
     public function capture_credentials(): bool {
 
         /**
          * Autenticación del usuario
-         * 
+         *
          * @var DLAuth
          */
         $auth = DLAuth::get_instance();
 
         /**
          * Nombre de usuario
-         * 
+         *
          * @var string
          */
         $username = $this->get_required(
@@ -95,7 +94,7 @@ abstract class UserBase extends DLUser {
 
         /**
          * Contraseña captura del formulario del cliente HTTP.
-         * 
+         *
          * @var string
          */
         $password = $this->get_password_valid(
@@ -120,7 +119,7 @@ abstract class UserBase extends DLUser {
 
         /**
          * Indica si se ha loggeado el usuario
-         * 
+         *
          * @var boolean $logged
          */
         $logged = $auth->auth($this, $auth_options, $cookie);

@@ -8,33 +8,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Título básico -->
-  <title>DLUnire - Framework PHP moderno para APIs</title>
+  <title>DLUnire - Ecosistema para el desarrollo rápido de aplicaciones Web orientadas a APIs</title>
+
+  <!-- SEO básico -->
+  <meta name="description"
+    content="DLUnire: ecosistema para el desarrollo rápido de aplicaciones Web orientadas a APIs. Incluye DLCore (ORM y motor de plantillas), DLRoute (enrutamiento) y DLStorage (almacenamiento binario cifrado), con entorno tipado .env.type. Licencia dual AGPL-3.0 / comercial." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://dlunire.dev/" />
+
+  <meta name="dlroute:base-url" content="http://localhost:5173">
+
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' https://static.cloudflareinsights.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    img-src 'self' data:;
+    font-src 'self' https://fonts.gstatic.com;
+    connect-src 'self' https://cloudflareinsights.com;
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    upgrade-insecure-requests;
+  " />
 
   <!-- Open Graph / Social Media -->
-  <meta property="og:title" content="DLUnire - Framework PHP moderno para APIs" />
+  <meta property="og:title"
+    content="DLUnire - Ecosistema para desarrollo rápido de aplicaciones Web orientadas a APIs" />
   <meta property="og:description"
-    content="DLUnire es un framework PHP orientado a APIs: sencillo, elegante y productivo. Incluye DLCore (ORM + .env.type tipado), DLRoute y DLStorage." />
+    content="Ecosistema para APIs: DLCore (ORM, plantillas, correo), DLRoute (ruteo) y DLStorage (binarios cifrados), con .env.type tipado. Licencia AGPL-3.0 o comercial." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dlunire.dev" />
-  <meta property="og:image" content="https://dlunire.dev/preview" />
+  <meta property="og:image" content="https://dlunire.dev/preview.png" />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="DLUnire - Framework PHP moderno" />
+  <meta property="og:image:alt" content="DLUnire - Ecosistema para desarrollo Web orientado a APIs" />
   <meta property="og:site_name" content="DLUnire" />
   <meta property="og:locale" content="es_ES" />
 
   <!-- Twitter / X Cards -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="DLUnire - Framework PHP moderno para APIs" />
+  <meta name="twitter:title"
+    content="DLUnire - Ecosistema para desarrollo rápido de aplicaciones Web orientadas a APIs" />
   <meta name="twitter:description"
-    content="DLUnire es un framework PHP orientado a APIs: sencillo, elegante y productivo." />
-  <meta name="twitter:image" content="https://dlunire.dev/preview" />
+    content="Ecosistema modular y ligero para desarrollo Web orientado a APIs. Incluye ruteo, ORM y arquitectura clara." />
+  <meta name="twitter:image" content="https://dlunire.dev/preview.png" />
+  <meta name="twitter:site" content="@dlunire" />
 
-  <!-- Meta básico -->
-  <meta name="description"
-    content="DLUnire es un framework PHP moderno diseñado para ofrecer una experiencia de desarrollo backend sencilla, elegante y productiva." />
-
-  <meta name="dlroute:base-url" content="http://localhost:5173" />
+  <meta name="dlroute:base-url" content="https://dlunire.dev" />
 
   <script type="module" crossorigin src="/assets/index.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index.css">

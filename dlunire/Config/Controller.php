@@ -19,7 +19,6 @@ use Framework\Requests\Request;
  * @license AGPL-3.0-or-later
  */
 abstract class Controller extends BaseController {
-
     use Token;
 
     /**

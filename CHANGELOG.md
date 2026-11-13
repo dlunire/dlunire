@@ -10,7 +10,14 @@ formato [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/).
 
 ---
 
-## [Unreleased]
+## [v2.0.0] 2026-11-13
+
+Se realizaron los siguientes cambios:
+
+- Cambio de licencia a AGPL
+- 
+
+## [v1.0.3]
 
 > **Not yet published.** Changes below are ready for the next skeleton release.  
 > **Aún no publicado.** Los cambios siguientes quedan listos para la próxima
@@ -215,7 +222,6 @@ Etiquetas estables previas de la línea `v1.0.x` (ver tags de Git).
 
 ---
 
-[Unreleased]: https://github.com/dlunire/dlunire/compare/v1.0.3...HEAD
 [v1.0.3]: https://github.com/dlunire/dlunire/releases/tag/v1.0.3
 [v1.0.2]: https://github.com/dlunire/dlunire/releases/tag/v1.0.2
 [v1.0.1]: https://github.com/dlunire/dlunire/releases/tag/v1.0.1

@@ -27,3 +27,6 @@ cache
 # PHPUnit
 .phpunit.cache
 .phpunit.result.cache
+
+# Información de commit excluido
+commit.txt

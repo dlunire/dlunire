@@ -1,58 +1,74 @@
 <!doctype html>
-<html lang="es-ES" data-theme="dark">
+<html lang="es">
+
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="icon" type="image/svg+xml"
+            href="{{ $route('/favicon.svg') }}" />
+        <link rel="icon" type="image/svg+xml"
+            href="{{ $route('/favicon-dark.svg') }}"
+            media="(prefers-color-scheme: dark)" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#080a0f" id="meta-theme-color" />
-        <meta
-            name="description"
-            content="DLUnire — framework PHP orientado a API. Skeleton, DLCore, DLRoute y DLStorage. ORM, rutas JSON y .env.type."
-        />
-        <meta name="color-scheme" content="dark light" />
-        <!-- CSP también se envía por cabecera HTTP (frame-ancestors solo aplica ahí). -->
-        <meta http-equiv="Content-Security-Policy" content="{{ $csp }}" />
 
-        <title>DLUnire — Framework PHP orientado a API</title>
+        <!-- Título básico -->
+        <title>DLUnire - Ecosistema para el desarrollo rápido de aplicaciones
+            Web orientadas a APIs</title>
 
-        <meta name="dlroute:base-url" content="{{ $route('/') }}" />
+        <meta http-equiv="Content-Security-Policy" content="
+            default-src 'none';
+            script-src 'nonce-{{ $token }}' 'strict-dynamic';
+            style-src 'nonce-{{ $token }}' https://fonts.googleapis.com;
+            font-src 'self' https://fonts.gstatic.com;
+            img-src 'self' data:;
+            connect-src 'self';
+            manifest-src 'self';
+            object-src 'none';
+            base-uri 'none';
+            form-action 'self';
+            upgrade-insecure-requests;
+        " />
 
-        <!-- SVG light (por defecto) · coloque public/favicon.svg -->
-        <link
-            rel="icon"
-            type="image/svg+xml"
-            href="{{ $route('favicon.svg') }}"
-            sizes="any"
-        />
-        <!-- SVG dark · coloque public/favicon-dark.svg -->
-        <link
-            rel="icon"
-            type="image/svg+xml"
-            href="{{ $route('favicon-dark.svg') }}"
-            media="(prefers-color-scheme: dark)"
-            sizes="any"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap"
-            rel="stylesheet"
-            nonce="{{ $token }}"
-        />
+        <!-- SEO básico -->
+        <meta name="description"
+            content="DLUnire: ecosistema para el desarrollo rápido de aplicaciones Web orientadas a APIs. Incluye DLCore (ORM y motor de plantillas), DLRoute (enrutamiento) y DLStorage (almacenamiento binario cifrado), con entorno tipado .env.type. Licencia dual AGPL-3.0 / comercial." />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="{{ $route('') }}" />
 
-        <link
-            rel="stylesheet"
-            href="{{ $route('/style') }}"
-            nonce="{{ $token }}"
-        />
+        <meta name="dlroute:base-url" content="{{ $route('') }}" />
+
+        <!-- Open Graph / Social Media -->
+        <meta property="og:title"
+            content="DLUnire - Ecosistema para desarrollo rápido de aplicaciones Web orientadas a APIs" />
+        <meta property="og:description"
+            content="Ecosistema para APIs: DLCore (ORM, plantillas, correo), DLRoute (ruteo) y DLStorage (binarios cifrados), con .env.type tipado. Licencia AGPL-3.0 o comercial." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ $route('') }}" />
+        <meta property="og:image" content="{{ $route('') }}/preview.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt"
+            content="DLUnire - Ecosistema para desarrollo Web orientado a APIs" />
+        <meta property="og:site_name" content="DLUnire" />
+        <meta property="og:locale" content="es_ES" />
+
+        <!-- Twitter / X Cards -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title"
+            content="DLUnire - Ecosistema para desarrollo rápido de aplicaciones Web orientadas a APIs" />
+        <meta name="twitter:description"
+            content="Ecosistema modular y ligero para desarrollo Web orientado a APIs. Incluye ruteo, ORM y arquitectura clara." />
+        <meta name="twitter:image" content="{{ $route('') }}/preview.png" />
+        <meta name="twitter:site" content="@dlunire" />
+
+        <script type="module" src="{{ $route('/assets/index.js') }}"
+            nonce="{{ $token }}"></script>
+        <link rel="stylesheet" href="{{ $route('/assets/index.css') }}"
+            nonce="{{ $token }}">
     </head>
 
     <body>
-        <main class="app" id="app"></main>
-        <script
-            src="{{ $route('/script') }}"
-            nonce="{{ $token }}"
-            type="module"
-        ></script>
+        <main id="app" class="main"></main>
     </body>
+
 </html>

@@ -5,16 +5,15 @@ namespace Framework\Auth;
 /**
  * Autenticación por roles de usuario a partir de una relación
  * de muchos a muchos
- * 
+ *
  * @package Framework\Auth
- * 
+ *
  * @version 1.0.0 (release)
  * @author David E Luna M <davidlunamontilla@gmail.com>
  * @copyright 2023 David E Luna M
  * @license AGPL-3.0-or-later
  */
 abstract class Roles extends UserBase {
-
     /**
      * Nombre de la columna del token
      *
@@ -64,21 +63,21 @@ abstract class Roles extends UserBase {
 
         /**
          * Autenticador
-         * 
+         *
          * @var AuthBase $authbase
          */
         $authbase = AuthBase::get_instance();
 
         /**
          * Datos de la sesión del usuario
-         * 
+         *
          * @var array $auth
          */
         $auth = $authbase->get_session_value('auth');
 
         /**
          * Token de autenticación
-         * 
+         *
          * @var string|null
          */
         $token = null;
